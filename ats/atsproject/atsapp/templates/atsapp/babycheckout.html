@@ -1,0 +1,110 @@
+{% extends 'atsapp/base.html' %} 
+{% load static %}
+
+
+
+
+{% block content %}
+
+<div>
+    <body class=".bg-primary">
+        <h4 class="text-center col-12">PLEASE FILL IN THE CHECK OUT INFORMATION OF THE BABY</h4>
+         
+            <form class = "p-4">
+              <div class="container col-12">
+                <div class="row">
+                  <div class="col-6">
+                    <h6 class="text-start">1- The ID Number of the Baby</h6> <br>
+                    <input type="text" class="form-control col-8" placeholder="Enter ID Number">
+                  </div>
+                  <div class="col-6">
+                    <h6 class="text-start">2- Date of Check Out of the Baby</h6> <br>
+                    <input type="date" class="form-control col-8" placeholder="Enter Check Out Date">
+                    <br>
+                  </div>
+                </div> 
+              </div>
+              
+              <form class = "p-5">
+                <div class="container col-12">
+                  <div class="row">
+                    <div class="col-6">
+                      <h6 class="text-start">3- Time of Checking Out of The Baby</h6> <br>
+                      <input type="time" class="form-control col-8" placeholder="Enter Time">
+                    </div>
+                    <div class="col-6">
+                      <h6 class="text-start">4- The Confirmed Baby's Period of Stay</h6> <br>
+                      <select class="custom-select col-8" id="inlineFormCustomSelect">
+                          <option selected>Choose Period of Stay</option>
+                          <option value="1">Morning</option>
+                          <option value="2">Afternoon</option>
+                          <option value="3">Evening</option>
+                          <option value="4">Full Day</option>
+                          <option value="5">Half Day</option>
+                        </select>
+                      <br> <br>
+                    </div>
+                  </div> 
+                </div>
+      
+                <form class = "p-5">
+                  <div class="container col-12">
+                    <div class="row">
+                      <div class="col-6">
+                        <h6 class="text-start">5- Sur Name of Person Picking The Bay</h6> <br>
+                        <input type="text" class="form-control col-8" placeholder="Enter Sur Name">
+                      </div>
+                      <div class="col-6">
+                        <h6 class="text-start">6- Other Names of The Person Picking The Baby</h6> <br>
+                        <input type="text" class="form-control col-8" placeholder="Enter Other Names">
+                        <br>
+                      </div>
+                    </div> 
+                  </div>
+      
+                  <form class = "p-5">
+                    <div class="container col-12">
+                      <div class="row">
+                        <div class="col-6">
+                          <h6 class="text-start">7- The Contact of The Person Picking The </h6> <br>
+                          <input type="text" class="form-control col-8" placeholder="Telephone Number">
+                        </div>
+                        <div class="col-6">
+                          <h6 class="text-start">8- Allowance to Baby Sitter</h6> <br>
+                          <input type="currency" class="form-control col-8" placeholder="Enter Amount in UGX">
+                          <br>
+                        </div>
+                      </div> 
+                    </div>
+      
+                    <form class = "p-5">
+                      <div class="container col-12">
+                        <div class="row">
+                          <div class="col-6">
+                            <h6 class="text-start">9- Sur Name of Sitter Who Cared for the Baby</h6> <br>
+                            <input type="text" class="form-control col-8" placeholder="Enter Sur Name">
+                          </div>
+                          <div class="col-6">
+                            <h6 class="text-start">10- Other Names of Sitter who acred for the Baby</h6> <br>
+                            <input type="date" class="form-control col-8" placeholder="Enter Other Names">
+                            <br>
+                          </div>
+                        </div> 
+                      </div>   
+                      <div class="form-group col-6">
+                        <label for="exampleFormControlTextarea1">11- Give Your Comment</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                        <br>
+                        <input class="btn btn-primary" type="submit" value="Submit">
+                    </div>
+      
+            </form>
+    
+
+</div>
+
+
+
+
+
+{% endblock %}

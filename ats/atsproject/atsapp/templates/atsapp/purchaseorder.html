@@ -1,0 +1,68 @@
+{% extends 'atsapp/base.html' %} 
+{% load static %}
+
+
+
+
+{% block content %}
+
+
+
+<div>
+
+    <h1 class="text-center">PROCUREMENT OF PRODUCTS</h1>
+    <br> <br>
+<body class=".bg-primary">
+  <h4 class="text-center col-12">ENTER NEW PURCHASES</h4>
+   
+      <form class = "p-5">
+        <div class="container col-12">
+          <div class="row">
+            <div class="col-6">
+              <h6 class="text-start">1- The Description/Name of the Product</h6> <br>
+              <input type="text" class="form-control col-8" placeholder="Enter Product Name">
+            </div>
+            <div class="col-6">
+              <h6 class="text-start">2- The Unit Cost of Purchased Product</h6> <br>
+              <input type="text" class="form-control col-8" placeholder="Enter Unit Cost in UGX">
+              <br>
+            </div>
+          </div> 
+        </div>
+  
+        <div class="container col-12">
+          <div class="row">
+            <div class="col-6">
+              <h6 class="text-start">3- Enter the Quantity Purchased</h6> <br>
+              <input type="text" class="form-control col-8" placeholder="Enter Quantity Here">
+            </div>
+            <div class="col-6">
+              <h6 class="text-start">4- Date of Purchase of the Product</h6> <br>
+              <input type="date" class="form-control col-8" placeholder="Enter Date">
+              <br>
+            </div>
+          </div> 
+        </div>
+  
+        <div class="container col-12">
+          <div class="row">
+            <div class="col-6">
+              <h6 class="text-start">5- Date of Entry in System</h6> <br>
+              <input type="text" class="form-control col-8" placeholder="Date of Entry">
+            </div>
+            <div class="col-6">
+              <h6 class="text-start">6- The Invoice/Receipt Reference Number</h6> <br>
+              <input type="date" class="form-control col-8" placeholder="Enter Invoice/Receipt">
+              <br>
+            </div>
+          </div> 
+        </div>
+          <div class="p-3">
+          <input class="btn btn-primary" type="submit" value="Submit"> 
+        </div>    
+      </form>
+
+</div>
+
+
+{% endblock %}

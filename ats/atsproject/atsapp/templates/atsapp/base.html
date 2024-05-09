@@ -1,18 +1,182 @@
-<!-- <!DOCTYPE html>
+{% load static %}
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="Description" content="Enter your description here"/>
+
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<link rel="stylesheet" href="assets/css/style.css">
+
+<link rel="stylesheet" href="{% static 'atsapp/css/stail.css' %}">
+
+
 <title>Title</title>
+
 </head>
+
 <body>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+
+    <header>
+
+    <div class="container">
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light" style = "background-color: rgb(50, 60, 100);">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#" style ="color: rgb(255, 255, 255);"><img src="{% static 'newapp/images/baby-image_09-01.png' %}" alt="Logo" style="width:70px;"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse flex-fill" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'homeats' %}" style ="color: rgb(255, 255, 255);">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'babyregistrationats' %}" style ="color: rgb(255, 255, 255);">Baby Registration</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'sitterregistrationats' %}" style ="color: rgb(255, 255, 255);">Sitter Regiastration</a>
+              </li>
+    
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'babycheckinats' %}" style ="color: rgb(255, 255, 255);">Baby Checkin</a>
+              </li>
+    
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'babycheckoutats' %}" style ="color: rgb(255, 255, 255);">Baby Checkout</a>
+              </li>
+    
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'purchaseorderats' %}" style ="color: rgb(255, 255, 255);">Purchase Order</a>
+              </li>
+    
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'salesorderats' %}" style ="color: rgb(255, 255, 255);">Sales Order</a>
+              </li>
+    
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'editinfoats' %}" style ="color: rgb(255, 255, 255);">Edit Information</a>
+              </li>
+    
+              <li class="nav-item">
+                <a class="nav-link" href="#" style ="color: rgb(255, 255, 255);">Logout</a>
+              </li>
+    
+              
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-light" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+    </div>
+
+     
+        
+
+    </header>
+
+    <main>
+        <div class="container-fluid" >
+            <div class="row flex-nowrap">
+                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 background-color" style = "background-color: rgb(55, 155, 155);">
+                    <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                        <a href="{% url 'homeats' %}" class="d-flex align-items-center pb-2 mb-md-0 me-md-auto text-white text-decoration-none">
+                          <img src="{% static 'newapp/images/home_icon_two.svg' %}" alt="" style="width:40px;"><span class="fs-4 d-none d-sm-inline">DAYSTAR</span>
+                        </a>
+                        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                            <li class="nav-item">
+                                <a href="{% url 'dashboardats' %}" class="nav-link align-middle px-0">
+                                    <i class="fs-5 bi-house"></i> <img src="{% static 'newapp/images/dashboard_icon_two.svg' %}" alt="" style="width:20%;"><span class="ms-1 d-none d-sm-inline text-white">Dashboard</span>
+                                </a>
+                            </li>
+                            
+                            <li>
+                                
+                                <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                                    <li class="w-100">
+                                        <a href="{% url 'babylistats' %}" class="nav-link px-0"> <img src="{% static 'newapp/images/baby_icon_two.svg' %}" alt="" style="width:20%;"><span class="d-none d-sm-inline text-white">Baby Record</span></a>
+                                    </li>
+                                    <li>
+                                        <li class="w-100">
+                                            <a href="{% url 'sitterlistats' %}" class="nav-link px-0"> <img src="{% static 'newapp/images/sitter_icon_two.svg' %}" alt="" style="width:20%;"><span class="d-none d-sm-inline text-white">Sitter Record</span></a>
+                                        </li>
+                                        <li>
+                                        <a href="{% url 'financereportats' %}" class="nav-link px-0"> <img src="{% static 'newapp/images/finance_icon_two.svg' %}" alt="" style="width:40px;"><span class="d-none d-sm-inline text-white">Finance Report</span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="{% url 'salesreportats' %}" class="nav-link px-0 align-middle">
+                                    <i class="fs-4 bi-table"></i> <img src="{% static 'newapp/images/sales_icon_two.svg' %}" alt="" style="width:40px;"><span class="ms-1 d-none d-sm-inline text-white">Sales Report</span></a>
+                            </li>
+                            <li>
+                                <a href="{% url 'inventoryats' %}" class="nav-link px-0 align-middle">
+                                    <i class="fs-4 bi-table"></i> <img src="{% static 'newapp/images/inventory_icon_two.svg' %}" alt="" style="width:20%;"><span class="ms-1 d-none d-sm-inline text-white">Inventory</span></a>
+                            </li>
+                            
+                            <li>
+
+                                <li>
+                                    <a href="{% url 'bcheckinrecordats' %}" class="nav-link px-0 align-middle">
+                                        <i class="fs-4 bi-table"></i> <img src="{% static 'newapp/images/checkin_icon_two.svg' %}" alt="" style="width:20%;"><span class="ms-1 d-none d-sm-inline text-white">Checkin Record</span></a>
+                                </li>
+                                
+                                <li>
+                                    <a href="{% url 'bcheckoutrecordats' %}" class="nav-link px-0 align-middle">
+                                        <i class="fs-4 bi-table"></i> <img src="{% static 'newapp/images/checkout_icon_two.svg' %}" alt="" style="width:24%;"><span class="ms-1 d-none d-sm-inline text-white">Checkout Record</span></a>
+                                </li>
+                              
+                        </ul>
+                        
+                    </div>
+                </div>
+
+        {% block content %}
+        
+        {% endblock content %}
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+    
+    </main>
+
+<footer  style = "background-color: rgb(50, 60, 100);">
+    <div class="row container justify-content-between daystarfooter">
+        <div class="col justify-content-center">
+    
+          <img class ="" src="#" alt="Logo" style="width:25%;">
+      
+        </div>
+      
+        <div class="col">
+      
+          <a class =""> Powered By: Awoii Tech Systems</a>
+         
+        <p>P.O. Box 237, Ntinda Telephone: +256 752 616 406<a class = "" href="mailto:awoiibobwilly@gmail.com"> awoiibobwilly@gmail.com</a></p>
+        <p> Copy Right &#169; 2024</p>
+      
+        </div>
+      
+        <div class="col ">
+          <img src="#" alt="Logo" style="width:25%;">
+      
+        </div>
+    
+      </div>
+     
+
+</footer>
 </body>
-</html> -->
+</html>
+
