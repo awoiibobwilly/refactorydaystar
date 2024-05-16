@@ -7,79 +7,45 @@
 {% block content %}
 
 
-<!-- <h1 class="text-center">BABY CHECK IN RECORD</h1> -->
-<div class "p-5">
+<h1 class="text-center">BABY CHECK IN RECORD</h1>
+<div class "p-5" style = "font-size: 12px;">
 <br>
    
-    <table class="table">
+    <table class="table table table-hover table-info">
         <thead>
           <tr>
             <th scope="col">Baby ID No</th>
             <th scope="col">Baby Sur Name</th>
             <th scope="col">Baby Other Names</th>
-            <th scope="col">Check In Date</th>
-            <th scope="col">Check In Time</th>
-            <th scope="col">Period of Stay</th>
-            <th scope="col">Droper's Sur Name</th>
-            <th scope="col">Droper's Other Names</th>
-            <th scope="col">Droper's Contact</th>
-            <th scope="col">Sitter's Sur Name</th>
-            <th scope="col">Sitter's Other Names</th>
-            <th scope="col">Fee Paid by Baby</th>
-            <th scope="col">Allowance Due to Sitter</th>
-            <th scope="col">Comment</th>
-
+            <th scope="col">Baby Gender</th>
+            <th scope="col">Baby Date of Birth</th>
+            <th scope="col">Parent's Sur Name</th>
+            <th scope="col">Parent's Other Names</th>
+            <th scope="col">Parent's Gender</th>
+            <th scope="col">Parent's Date of Birth</th>
+            <th scope="col">Parent's Telephone</th>
+            <th scope="col">Parent's Location</th>
+            <th scope="col">Parent's Email</th>
           </tr>
         </thead>
         <tbody>
+          {% for list in babylists %}
           <tr>
-            <th scope="row">DDB-0001</th>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-            <td>7</td>
-            <td>8</td>
-            <td>9</td>
-            <td>10</td>
-            <td>11</td>
-            <td>12</td>
-            <td>13</td>
+            <td>{{ list.id }}</td>
+            <td>{{ list.babiz_sur_name }}</td>
+            <td>{{ list.babiz_other_names }}</td>
+            <td>{{ list.babiz_gender }}</td>
+            <td>{{ list.babiz_date_of_birth }}</td>
+            <td>{{ list.parentz_sur_name }}</td>
+            <td>{{ list.parentz_other_names }}</td>
+            <td>{{ list.parentz_gender }}</td>
+            <td>{{ list.parentz_date_of_birth }}</td>
+            <td>{{ list.parentz_telephonee }}</td>
+            <td>{{ list.parentz_address }}</td>
+            <td>{{ list.parentz_email }}</td>
+            
           </tr>
-          <tr>
-            <th scope="row">DDB-0002</th>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-            <td>7</td>
-            <td>8</td>
-            <td>9</td>
-            <td>10</td>
-            <td>11</td>
-            <td>12</td>
-            <td>13</td>
-          </tr>
-          <tr>
-            <th scope="row">DDB-0003</th>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-            <td>7</td>
-            <td>8</td>
-            <td>9</td>
-            <td>10</td>
-            <td>11</td>
-            <td>12</td>
-            <td>13</td>
-          </tr>
+          {% endfor %}
         </tbody>
       </table> 
 </div>

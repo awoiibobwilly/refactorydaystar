@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="{% static 'atsapp/css/stail.css' %}">
 
 
-<title>Title</title>
+<title>Sign Up</title>
 
 </head>
 
@@ -24,17 +24,17 @@
 
                 {% block content %}
 
-                <div>
-                    <div class="container col-12">
-                        <img class="img-fluid" src="{% static 'atsapp/images/ddimage.jpg' %}" alt="Snow" style="max-width: 100%; height: auto;">
-                        <div class="centered1"><img src="{% static 'atsapp/images/baby-image_08-01.png' %}" alt="Snow" style="width:100%;"></div>
-                        <div class="centered">WELCOME TO DAYSTAR DAYCARE</div>
-                        <div class="centered2"><a class = "indexbut" type="submit" href="{% url 'loginats' %}"> GET STARTED </a></div>
-                        <div class="bottom-left"><div class="bottom-left2"> Awoii Tech Systems</div> <br> <img src="{% static 'atsapp/images/Awoii_Tech_Systems_03-01.png' %}" alt="Snow" style="width:18%;"> </div>
-                    </div>
-                
-                </div>
-                
+                <div class="daycare_forms row g-3">
+
+                    <form type = "submit" action="" method="POST">
+                      {% csrf_token %}
+                      
+                       
+                     
+                      <input type="submit" value="Submit" class="btn btn-secondary">
+                    </form>
+
+
                 {% endblock %}
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>

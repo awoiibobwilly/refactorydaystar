@@ -1,39 +1,68 @@
-{% extends 'atsapp/base.html' %} 
+
 {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
 
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<link rel="stylesheet" href="{% static 'atsapp/css/stail.css' %}">
 
 
+<title>Title</title>
+
+</head>
+
+<body style="width: 100%;">
 {% block content %}
-
-
 
 <div>
 
     <div class="container col-12">
-        <img class = "" src="/ddimages/ddimage5.jpg" alt="Snow" style="width:100%;">
-        <div class="top-left"><img src="/ddimages/baby-image_09-01.png" alt="Snow" style="width:20%;"> WELCOME TO </div>
-        <div class="top-right"><img src="/ddimages/baby-image_09-01.png" alt="Snow" style="width:20%;">DAYSTAR DAYCARE</div>
+        <img class = "" src="{% static 'atsapp/images/ddimage5.jpg' %}" alt="Snow" style="width:100%;">
+        <div class="top-left"><img src="{% static 'atsapp/images/baby-image_09-01.png' %}" alt="Snow" style="width:20%;"> WELCOME TO </div>
+        <div class="top-right"><img src="{% static 'atsapp/images/baby-image_09-01.png' %}" alt="Snow" style="width:20%;">DAYSTAR DAYCARE</div>
         <div class="login">
-            <form class = "loginform">
+           
+          <form action="" method="POST">
+            {% csrf_token %}
+         
+          </form>
+          
+          
+          <div class = "loginform">
+
                 <div class="mb-3">
                   <label for="exampleInputEmail1" class="form-label" id ="uname">User Name</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
                   <label for="exampleInputPassword1" class="form-label">Password</label>
                   <input type="password" class="form-control" id="exampleInputPassword1">
                 </div>
-                <div class="mb-3 form-check">
+                <!-- <div class="mb-3 form-check">
                   <input type="checkbox" class="form-check-input" id="exampleCheck1">
                   <label class="form-check-label" for="exampleCheck1">Remember Me</label>
-                </div>
+                </div> -->
                 <button type="submit" class="signin">Sign in</button>
-              </form>
+              </div>
         </div>
 
     </div>
 </div>
 
-
 {% endblock %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+    
+</body>
+</html>

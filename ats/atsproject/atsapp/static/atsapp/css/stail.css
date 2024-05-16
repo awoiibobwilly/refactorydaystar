@@ -148,3 +148,28 @@ height:auto;
     height:auto;
     justify-content: center;
   }
+
+  /* styling baby registration form starts*/
+
+  .daycare_forms{
+    width: 50%;
+    margin: 10% auto;
+    background-color: rgb(87, 210, 244);
+    color:rgb(0, 0, 0);
+    padding: 20px;
+    border-radius: 25px;
+    
+}
+
+.errorlist {
+    list-style: none !important;
+    margin: 0.4rem 0;
+    color: red !important;
+    padding: 0;
+}
+
+.errors input{
+    border: 1px solid red!important;
+}
+
+ /* styling baby registration form ends*/

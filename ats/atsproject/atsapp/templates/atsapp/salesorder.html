@@ -1,68 +1,32 @@
 {% extends 'atsapp/base.html' %} 
 {% load static %}
 
-
-
-
+ 
 {% block content %}
 
+<div class="">
+  <br>
+  <h1 class="text-center">Generate Sales</h1>
+  {% if submitted %}
 
-<div>
+    Sales Order Was Successfully Created!
 
-    <h1 class="text-center">SALES TO BABIES</h1>
-    <br> <br>
-<body class=".bg-primary">
-  <h4 class="text-center col-12">ENTER NEW SALES</h4>
-   
-      <form class = "p-5">
-        <div class="container col-12">
-          <div class="row">
-            <div class="col-6">
-              <h6 class="text-start">1- The ID Number of the Baby</h6> <br>
-              <input type="text" class="form-control col-8" placeholder="Enter ID Number">
-            </div>
-            <div class="col-6">
-              <h6 class="text-start">2- The Name of Product to be Sold</h6> <br>
-              <input type="text" class="form-control col-8" placeholder="Enter Product Name">
-              <br>
-            </div>
-          </div> 
-        </div>
-  
-        <div class="container col-12">
-          <div class="row">
-            <div class="col-6">
-              <h6 class="text-start">3- Unit Price of the Product</h6> <br>
-              <input type="text" class="form-control col-8" placeholder="Enter Price">
-            </div>
-            <div class="col-6">
-              <h6 class="text-start">4- Quantity to be Sold</h6> <br>
-              <input type="text" class="form-control col-8" placeholder="Enter Quantity">
-              <br>
-            </div>
-          </div> 
-        </div>
-  
-        <div class="container col-12">
-          <div class="row">
-            <div class="col-6">
-              <h6 class="text-start">5- Date of Sale</h6> <br>
-              <input type="text" class="form-control col-8" placeholder="Date of Sale">
-            </div>
-            <div class="col-6">
-              <h6 class="text-start">6- Enter Total Amount Paid</h6> <br>
-              <input type="text" class="form-control col-8" placeholder="Amount Paid in UGX">
-              <br>
-            </div>
-          </div> 
-        </div>
-          <div class="p-3">
-          <input class="btn btn-primary" type="submit" value="Submit"> 
-        </div>    
-      </form>
+  {% else %}
+<div class="daycare_forms row g-3">
+
+    <form class="" action="" method="POST">
+      {% csrf_token %}
+      
+        {{ form.as_p }}
+     
+      <input type="submit" value="Submit" class="btn btn-secondary">
+    </form>
 
 </div>
+  
 
+  {% endif %}
+</div>
+  
+{% endblock %} 
 
-
-{% endblock %}

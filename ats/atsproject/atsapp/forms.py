@@ -1,164 +1,251 @@
-# from django import forms
+from django import forms
+from django.forms import ModelForm
+from .models import *
 
-# class Baby_RegistrationForm(forms.Form):
-#     baby_gender = [
-#         ('Male', 'Male'),
-#         ('Female', 'Female'),
-#         ]
-#     parent_gender = [
-#         ('Male', 'Male'),
-#         ('Female', 'Female'),
-#         ]
-#     babyreg_baby_id = forms.AutoField(primary_key=True, label='Baby ID', required=True)
-#     babyreg_babys_sur_name = forms.CharField(max_length=100, label='Baby Surname', required=True)
-#     babyreg_babys_other_names = forms.CharField(max_length=200, label='Baby Other Names', required=True)
-#     babyreg_babys_gender = forms.ChoiceField(choices=baby_gender, label='Baby Gender', required=True)
-#     babyreg_babys_date_of_birth = forms.DateField(auto_now_add=True, label='Baby Birth of Date', required=True)
-#     babyreg_parents_sur_name = forms.CharField(max_length=100, label='Parent Surname')
-#     babyreg_parentns_other_names = forms.CharField(max_length=200, label='Parent Other Names')
-#     babyreg_parents_gender = forms.ChoiceField(choices=parent_gender, label='Parent Gender')
-#     babyreg_parents_date_of_birth = forms.DateField(auto_now_add=True, label='Parent Birth of Date', required=True)
-#     babyreg_parents_telephone = forms.IntegerField(max_length=20, label='Parent Telephone', required=True)
-#     babyreg_parents_address = forms.CharField(max_length=200, label='Parent Address', required=True)
-#     babyreg_parents_email = forms.EmailField(max_length=254, label='Parent email', required=True)
+#This is Baby Registration Form
 
-#     def __str__(self):
-#         return self.babyreg_baby_id
+# class User_RegistrationForm(forms.ModelForm):
+#     class Meta:
+#         model = User_Registration
+#         fields = ('username', 'email', 'new_password', 'confirm_password')
+#         labels = {
+#             'username':'Username',
+#             'email':'Email',
+#             'new_password':'New Password',
+#             'confirm_password':'Confirm Password'}
+#         widgets = {
+#             'username': forms.TextInput(attrs={'class':'form-control', 'placeholder':'mukaroberts'}),
+#             'email': forms.EmailInput(attrs={'class':'form-control', 'placeholder':'mukaroberts@gmail.com'}),
+#             'new_password': forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'********'}),
+#             'confirm_password': forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'********'})}
+            
 
 
-# class Sitter_RegistrationForm(forms.Form):
-#     sitter_gender = [
-#         ('Male', 'Male'),
-#         ('Female', 'Female'),
-#         ]
-#     nok_gender = [
-#         ('Male', 'Male'),
-#         ('Female', 'Female'),
-#         ]
-#     sitter_edulevel = [
-#         ('Primary', 'Primary'),
-#         ('O-Level', 'O-Level'),
-#         ('A-Level', 'A-Level'),
-#         ('Certificate', 'Certificate'),
-#         ('Diploma', 'Diploma'),
-#         ('Degree', 'Degree'),
-#         ('Others', 'Others'),
-#         ]
-#     sitter_religion = [
-#         ('Born Aagain', 'Born Aagain'),
-#         ('Anglican', 'Anglican'),
-#         ('Catholic', 'Catholic'),
-#         ('Islam', 'Islam'),
-#         ('Others', 'Others'),
-#         ]
-#     sitter_location = [
-#         ('Kabalagala', 'Kabalagala'),
-#         ('Other', 'Other'),
-#         ]
-#     sitterreg_sitter_id = forms.AutoField(primary_key=True, label='Sitter ID', required=True)
-#     sitterreg_sitter_sur_name = forms.CharField(max_length=100, label='Sitter Surname', required=True)
-#     sitterreg_sitter_other_names = forms.CharField(max_length=200, label='Sitter Other Names', required=True)
-#     sitterreg_sitter_gender = forms.ChoiceField(choices=sitter_gender, label='Sitter Gender', required=True)
-#     sitterreg_sitter_date_of_birth = forms.DateField(auto_now_add=, label='Sitter Date of Birth', required=True)
-#     sitterreg_sitter_nin_number = forms.IntegerField(max_length=50, label='NIN Number', required=True)
-#     sitterreg_sitter_educlevel = forms.ChoiceField(choices=sitter_edulevel, label='Education Level')
-#     sitterreg_sitter_religion = forms.ChoiceField(choices=sitter_religion, label='Religion (Optional)')
-#     sitterreg_sitter_address = forms.CharField(max_length=200, default= 'Kabalagala', label='Next Ofkin Address', required=True)
-#     sitterreg_sitter_email = forms.EmailField(max_length=254, label='Email Address(Optional)')
-#     sitterreg_sitter_telephone = forms.IntegerField(max_length=20, label='Sitter Telephone', required=True)
-#     sitterreg_nextofkin_sur_name = forms.CharField(max_length=100, label='Next Of Kin Surname', required=True)
-#     sittereg_nextofkin_other_names = forms.CharField(max_length=200, label='Next Of Kin Other Names', required=True)
-#     sitterreg_nextofkin_gender = forms.ChoiceField(choices=nok_gender, label='Next Of Kin Gender', required=True)
-#     sitterreg_nextofkin_date_of_birth = forms.DateField(auto_now_add=, label='Next Of Kin Date of Birth', required=True)
-#     sitterreg_nextofkin_address = forms.CharField(max_length=200, label='Next Of Kin Address', required=True)
-#     sitterreg_nextofkin_email = forms.EmailField(max_length=254, label='Next Of Kin email(Optional)', required=True)
-#     sitterreg_nextofkin_telephone = forms.IntegerField(max_length=20, label='Next Of Kin Telephone', required=True)
 
-#     def __str__(self):
-#         return self.sitterreg_sitter_id
+class Baby_RegisterForm(ModelForm):
+    class Meta:
+        model = Baby_Register
+        fields = ('babiz_sur_name',  'babiz_other_names', 'babiz_gender', 'babiz_date_of_birth', 'parentz_sur_name', 'parentz_other_names', 'parentz_gender', 'parentz_date_of_birth',  'parentz_telephone', 'parentz_address', 'parentz_email')
+        labels = {
+            'babiz_sur_name':'Baby Surname',
+            'babiz_other_names':'Baby Other Names',
+            'babiz_gender':'Baby Gender',
+            'babiz_date_of_birth':'Baby Date of Birth',
+            'parentz_sur_name':'Parent Surname',
+            'parentz_other_names':'Parent Other Names',
+            'parentz_gender':'Parent Gender',
+            'parentz_date_of_birth':'Parent Date of Birth',
+            'parentz_telephone':'Parent Telephone',
+            'parentz_address':'Parent Location',
+            'parentz_email':'Parent Email'}
+        widgets = {
+            'babiz_sur_name': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Vudriko'}),
+            'babiz_other_names': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Trisher'}),
+            'babiz_gender': forms.Select(attrs={'class': 'form-control', 'placeholder':'Female'}),
+            'babiz_date_of_birth': forms.DateInput(attrs={'class':'form-control', 'placeholder':'mm/dd/yyyy'}),
+            'parentz_sur_name': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Mukasa'}),
+            'parentz_other_names': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Roberts'}),
+            'parentz_gender': forms.Select(attrs={'class': 'form-control', 'placeholder':'Male'}),
+            'parentz_date_of_birth': forms.DateInput(attrs={'class':'form-control', 'placeholder':'mm/dd/yyyy'}),
+            'parentz_telephone': forms.TextInput(attrs={'class':'form-control', 'placeholder':'+256 772 772 772'}),
+            'parentz_address': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Kabalagala'}),
+            'parentz_email': forms.EmailInput(attrs={'class':'form-control', 'placeholder':'mukaroberts@gmail.com'})}
+        
+        def __str__(self):
+            return self.babiz_sur_name
+       
+#This is Baby Sitter Registration Form
 
+class Sitter_RegisterForm(ModelForm):
+    class Meta:
+        model = Sitter_Register
+        fields = ('sit_sur_name', 'sit_other_names', 'sit_gender', 'sit_date_of_birth', 'sit_nin_number', 'sit_educlevel', 'sit_religion', 'sit_address', 'sit_email', 'sit_telephone', 'snok_sur_name', 'snok_other_names', 'snok_gender', 'snok_date_of_birth', 'snok_address', 'snok_email', 'snok_telephone')
+        labels = {
+           'sit_sur_name':'Sitter Surname',
+           'sit_other_names':'Sitter Other Names',
+           'sit_gender':'Sitter Gender',
+           'sit_date_of_birth':'Sitter Date of Birth',
+           'sit_nin_number':'Sitter NIN Number',
+           'sit_educlevel':'Sitter Education Level',
+           'sit_religion':'Sitter Religion',
+           'sit_address':'Sitter Address',
+           'sit_email':'Sitter Email',
+           'sit_telephone':'Sitter Telephone',
+           'snok_sur_name':'Next Of Kin Surname',
+           'snok_other_names':'Next Of Kin Other Names',
+           'snok_gender':'Next Of Kin Gender',
+           'snok_date_of_birth':'Next Of Kin Date of Birth',
+           'snok_address':'Next Of Kin Address',
+           'snok_email':'Next Of Kin Email',
+           'snok_telephone':'Next Of Kin Telephone'}
+        widgets = {
+           'sit_sur_name': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Vudriko'}),
+           'sit_other_names': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Trisher'}),
+           'sit_gender': forms.Select(attrs={'class': 'form-control', 'placeholder':'Female'}),
+           'sit_date_of_birth': forms.DateInput(attrs={'class':'form-control', 'placeholder':'mm/dd/yyyy'}),
+           'sit_nin_number': forms.TextInput(attrs={'class':'form-control', 'placeholder':'CF9912307FEGP'}),
+           'sit_educlevel': forms.Select(attrs={'class': 'form-control', 'placeholder':'Some College'}),
+           'sit_religion': forms.Select(attrs={'class': 'form-control', 'placeholder':'Anglican'}),
+           'sit_address': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Kabalagala'}),
+           'sit_email': forms.EmailInput(attrs={'class':'form-control', 'placeholder':'mukaroberts@gmail.com'}),
+           'sit_telephone': forms.TextInput(attrs={'class':'form-control', 'placeholder':'+256 772 772 772'}),
+           'snok_sur_name': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Mukasa'}),
+           'snok_other_names': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Roberts'}),
+           'snok_gender': forms.Select(attrs={'class': 'form-control', 'placeholder':'Male'}),
+           'snok_date_of_birth': forms.DateInput(attrs={'class':'form-control', 'placeholder':'mm/dd/yyyy'}),
+           'snok_address': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Kabalagala'}),
+           'snok_email': forms.EmailInput(attrs={'class':'form-control', 'placeholder':'mukaroberts@gmail.com'}),
+           'snok_telephone': forms.TextInput(attrs={'class':'form-control', 'placeholder':'+256 772 772 772'})}
+        
+        def __str__(self):
+            return self.sit_sur_name
 
-# class CheckinForm(forms.Form):
-#     care_timein = [
-#         ('Morning', 'Morning'),
-#         ('Afternoon', 'Afternoon'),
-#         ('Evening', 'Evening'),
-#         ('Night', 'Night'),]
-#     checkin_payment_option = [
-#         ('Daily', 'Daily'),
-#         ('Weekly', 'Weekly'),
-#         ('Monthly', 'Monthly'),]
-#     checkin_sitter_status = [
-#         ('On Duty', 'On Duty'),
-#         ('Off Duty', 'Off Duty'),]
-#     checkin_baby_id = forms.ForeignKey(Sitter_Registration,on_delete=models.CASCADE, label= 'Baby ID', required=True)
-#     checkin_sitter_availability = forms.ChoiceField(choices=checkin_sitter_status, label= 'Sitter Availability', required=True)
-#     checkin_time = forms.TimeField(auto_now_add=True, label= 'Checkin Time', required=True)
-#     checkin_date = forms.DateField(auto_now_add=True, label= 'Checkin Date', required=True)
-#     checkin_care_time = forms.ChoiceField(choices=care_timein, label= 'Care Time', required=True)
-#     checkin_guardians_sur_name = forms.CharField(max_length=100, label='Guardian Surname', required=True)
-#     checkin_guardians_other_names = forms.CharField(max_length=200, label='Guardian Other Names', required=True)
-#     checkin_guardians_telephone = forms.IntegerField(max_length=20, label='Guardian Telephone', required=True)
-#     checkin_sitter_id = forms.ForeignKey(Sitter_Registration,on_delete=models.CASCADE, label='Sitter ID', required=True)
-#     checkin_payment_choice = models.ChoiceField(choices=checkin_payment_option, label='Mode of Payment', required=True)
-#     daystar_checkin_fee = forms.IntegerField(max_length=50, label='Daystar Fee', required=True)
-#     daystar_checkin_fee_currency = forms.CharField(max_length= 10, default= 'UGX', label='Currency', required=True)
-#     checkin_comment = forms.CharField(max_length=1000, label='Comment (Optional)')
-    
-
-
-# class CheckoutForm(forms.Form):
-#     care_timeout = [
-#         ('Morning', 'Morning'),
-#         ('Afternoon', 'Afternoon'),
-#         ('Evening', 'Evening'),
-#         ('Night', 'Night'),]
-#     checkout_payment_option = [
-#         ('Daily', 'Daily'),
-#         ('Weekly', 'Weekly'),
-#         ('Monthly', 'Monthly'),]
-#     checkin_baby_id = forms.ForeignKey(Sitter_Registration,on_delete=models.CASCADE, label='Baby ID', required = True)
-#     checkout_time = forms.TimeField(auto_now_add=True, label='Checkout Time', required = True)
-#     checkout_date = forms.DateField(auto_now_add=True, label='Checkout Date', required = True)
-#     checkout_care_time = forms.ChoiceField(choices=care_timein, label='Care Time', required = True)
-#     checkout_guardians_sur_name = forms.CharField(max_length=100, label='Guardian Surname', required = True)
-#     checkout_guardians_other_names = forms.CharField(max_length=200, label='Guardian Other Names', required = True)
-#     checkout_guardians_telephone = forms.IntegerField(label='Guardian Telephone', required = True)
-#     checkout_sitter_id = forms.ForeignKey(Sitter_Registration,on_delete=models.CASCADE, label='Sitter ID', required = True)
-#     checkout_payment_choice = forms.ChoiceField(choices=checkout_payment_option, label='Mode of Payment', required = True)
-#     daystar_care_time_fee = forms.IntegerField(label='Daystar Fee', required = True)
-#     daystar_care_time_fee_currency = forms.CharField(max_length= 10, default= 'UGX', label='Daystar Fee Currency', required = True)
-#     checkout_sitter_fee = forms.IntegerField(label='Sitter Fee', required = True)
-#     checkout_sitter_fee_currency = forms.CharField(max_length= 10, default= 'UGX', label='Sitter Fee Currency', required = True)
-#     checkout_comment = forms.CharField(max_length=1000, label='Comment(Optional)', required = True)
-
-#     def __int__(self):
-#         return self.checkin_baby_id
+class Sitter_StatusForm(ModelForm):
+    class Meta:
+        model = Sitter_Status
+        fields = ('sitter_id', 'sitter_availability', 'sitter_time', 'sitter_date')
+        labels = {
+           'sitter_id':'Sitter ID Number',
+           'sitter_availability':'Sitter Availability',
+           'sitter_time':'Sitter Time',
+           'sitter_date':'Sitter Date'}
+        widgets = {
+           'sitter_id': forms.TextInput(attrs={'class':'form-control', 'placeholder':'BDD0001'}),
+           'sitter_availability': forms.Select(attrs={'class': 'form-control', 'placeholder':'On Duty'}),
+           'sitter_time': forms.TextInput(attrs={'class':'form-control', 'placeholder':'10:00'}),
+           'sitter_date': forms.DateInput(attrs={'class':'form-control','placeholder':'09/05/2024'})}
+        
+        def __str__(self):
+            return self.sitter_id
 
 
-# class Purchase_OrderForm(forms.Form):
-#     po_invoice_number = forms.CharField(max_length=20, label='Invoice Number', required = True)
-#     po_item_number = forms.CharField(max_length=20, label='Item Number', required = True)
-#     po_product_name = forms.CharField(max_length=50, label=' Product Name', required =True)
-#     po_unit_cost = forms.IntegerField(label='Unit Cost', required = True)
-#     po_purchase_date = forms.DateTimeField(auto_now_add=True, label='Purchase Date', required = True)
-#     po_entry_date = forms.DateTimeField(auto_now_add=True, label='Item Entry Date', required = True)
-#     po_quantity = forms.IntegerField(label='Quantity', required = True)
-#     po_total = forms.IntegerField(label='Total Amount', required = True)
-#     po_currency = forms.CharField(max_length= 10, default= 'UGX', label='Currency', required=True)
-    
+class CheckinForm(ModelForm):
+    class Meta:
+        model = Checkin
+        fields = ('baby_id', 'checkin_sitter_availability', 'checkin_time', 'checkin_date', 'checkin_care_time', 'checkin_guardians_sur_name', 'checkin_guardians_other_names', 'checkin_guardians_telephone', 'sitter_id', 'checkin_payment_choice','daystar_checkin_fee', 'daystar_checkin_fee_currency', 'checkin_comment')
+        labels = {
+            'baby_id':'Baby ID Number',
+            'checkin_sitter_availability':'Sitter Availability',
+            'checkin_time':'Checkin Time',
+            'checkin_date':'Checkin Date',
+            'checkin_care_time':'Care Time',
+            'checkin_guardians_sur_name':'Guardians Surname',
+            'checkin_guardians_other_names':'Guardians Other Names',
+            'checkin_guardians_telephone':'Guardians Telephone',
+            'checkin_payment_choice':'Payment Choice',
+            'sitter_id':'Sitter ID Number',
+            'daystar_checkin_fee':'Daystar Checkin Fee',
+            'daystar_checkin_fee_currency':'Daystar Checkin Fee Currency',
+            'checkin_comment':'Checkin Comment'}
+        widgets = {
+            'baby_id': forms.TextInput(attrs={'class':'form-control','placeholder':'BDD0001'}),
+            'checkin_sitter_availability': forms.Select(attrs={'class':'form-control', 'placeholder':'On Duty'}),
+            'checkin_time': forms.TimeInput(attrs={'class':'form-control','placeholder':'7:30 AM'}),
+            'checkin_date': forms.DateInput(attrs={'class':'form-control','placeholder':'09/05/2024'}),
+            'checkin_care_time': forms.Select(attrs={'class':'form-control','placeholder':'Morning'}),
+            'checkin_guardians_sur_name': forms.TextInput(attrs={'class':'form-control','placeholder':'Kizito'}),
+            'checkin_guardians_other_names': forms.TextInput(attrs={'class':'form-control','placeholder':'Kenneth'}),
+            'checkin_guardians_telephone': forms.TextInput(attrs={'class':'form-control','placeholder':'+256777777777'}),
+            'checkin_payment_choice': forms.Select(attrs={'class': 'form-control','placeholder':'Daily'}),
+            'sitter_id': forms.TextInput(attrs={'class':'form-control', 'placeholder':'SDD0001'}),
+            'daystar_checkin_fee': forms.TextInput(attrs={'class':'form-control','placeholder':'10,000'}),
+            'daystar_checkin_fee_currency': forms.Select(attrs={'class': 'form-control','placeholder':'UGX'}),
+            'checkin_comment': forms.Textarea(attrs={'class':'form-control','placeholder':'Thanks for your service'})}
 
-#     def __int__(self):
-#         return self.po_invoice_number
+        def __str__(self):
+            return self.baby_id
 
-# class Sales_OrderForm(forms.Form):
-#     so_baby_id = forms.forms.IntegerField(label='Baby ID', required = True)
-#     so_date_created = forms.DateTimeField(auto_now_add=True, label='Sales Order Date', required = True)
-#     so_product_name = forms.CharField(max_length=20, label='Product Name', required = True)
-#     so_unit_price = forms.IntegerField(label='Unit Cost', required = True)
-#     so_quantity = forms.IntegerField(label='Quantity', required = True)
-#     so_total = forms.IntegerField(label='Total Amount', required = True)
-#     so_currency = forms.CharField(max_length= 10, default= 'UGX', label='Currency', required=True)
 
-#     def __int__(self):
-#         return self.so_baby_id
+
+class CheckoutForm(ModelForm):
+    class Meta:
+        model = Checkout
+        fields = ('baby_id', 'checkout_time', 'checkout_date', 'checkout_care_time', 'checkout_guardians_sur_name', 'checkout_guardians_other_names', 'checkout_guardians_telephone', 'sitter_id', 'checkout_payment_choice', 'daystar_care_time_fee', 'daystar_care_time_fee_currency', 'checkout_sitter_fee', 'checkout_sitter_fee_currency', 'checkout_comment')
+        labels = {
+            'baby_id':'Baby ID Number',
+            'checkout_time':'Checkout Time',
+            'checkout_date':'Checkout Date',
+            'checkout_care_time':'Care Time',
+            'checkout_guardians_sur_name':'Guardians Surname',
+            'checkout_guardians_other_names':'Guardians Other Names',
+            'checkout_guardians_telephone':'Guardians Telephone',
+            'checkout_payment_choice':'Payment Choice',
+            'sitter_id':'Sitter ID Number',
+            'daystar_care_time_fee':'Daystar Care Time Fee',
+            'daystar_care_time_fee_currency':'Daystar Care Time Fee Currency',
+            'checkout_sitter_fee':'Checkout Sitter Fee',
+            'checkout_sitter_fee_currency':'Checkout Sitter Fee Currency',
+            'checkout_comment':'Checkout Comment'}
+        widgets = {
+            'baby_id': forms.TextInput(attrs={'class':'form-control', 'placeholder':'BDD0001'}),
+            'checkout_time': forms.TimeInput(attrs={'class':'form-control', 'placeholder':'7:30 AM'}),
+            'checkout_date': forms.DateInput(attrs={'class':'form-control', 'placeholder':'09/05/2024'}),
+            'checkout_care_time': forms.Select(attrs={'class':'form-control', 'placeholder':'Morning'}),
+            'checkout_guardians_sur_name': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Kizito'}),
+            'checkout_guardians_other_names': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Kenneth'}),
+            'checkout_guardians_telephone': forms.TextInput(attrs={'class':'form-control', 'placeholder':'+256777777777'}),
+            'checkout_payment_choice': forms.Select(attrs={'class': 'form-control', 'placeholder':'Daily'}),
+            'sitter_id': forms.TextInput(attrs={'class':'form-control', 'placeholder':'SDD0001'}),
+            'daystar_care_time_fee': forms.TextInput(attrs={'class':'form-control', 'placeholder':'10,000'}),
+            'daystar_care_time_fee_currency': forms.Select(attrs={'class': 'form-control', 'placeholder':'UGX'}),
+            'checkout_sitter_fee': forms.TextInput(attrs={'class':'form-control', 'placeholder':'10,000'}),
+            'checkout_sitter_fee_currency': forms.Select(attrs={'class': 'form-control', 'placeholder':'UGX'}),
+            'checkout_comment': forms.Textarea(attrs={'class':'form-control', 'placeholder':'Thanks for your service'})}
+
+        def __str__(self):
+            return self.baby_id
+
+class ProcurementForm(ModelForm):
+    class Meta:
+        model = Procurement
+        fields = ('po_item_number','po_product_name','po_unit_cost','po_purchase_date','po_entry_date','po_quantity','po_total_amount')
+        labels = {
+        'po_item_number':'Item Number',
+        'po_product_name':'Product Name',
+        'po_unit_cost':'Unit Cost',
+        'po_purchase_date':'Date of Purchase',
+        'po_entry_date':'Date of Entry',
+        'po_quantity':'Quantity',
+        'po_total_amount':'Total Amount'}
+        widgets = {
+            'po_item_number': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Item Number'}),
+            'po_product_name': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Product Name'}),
+            'po_unit_cost': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Unit Cost'}),
+            'po_purchase_date': forms.DateInput(attrs={'class':'form-control', 'placeholder':'mm/dd/yyyy'}),
+            'po_entry_date': forms.DateInput(attrs={'class':'form-control', 'placeholder':'mm/dd/yyyy'}),
+            'po_quantity': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Quantity'}),
+            'po_total_amount': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Total Amount'})}
+
+        def __str__(self):
+            return self.po_item_number
+
+class ProductsStockException(Exception):
+    pass
+
+class Sales_OrderForm(ModelForm):
+    class Meta:
+        model = Sales_Order
+        fields = ('so_baby_id','so_date_created','so_item_number','so_unit_price','so_quantity','so_total_amount')
+        labels = {
+            'so_baby_id':'Baby ID Number',
+            'so_date_created':'Date Created',
+            'so_item_number':'Item Number',
+            'so_unit_price':'Unit Price',
+            'so_quantity':'Quantity',
+            'so_total_amount':'Total Amount'}
+        widgets = {
+           'so_baby_id': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Baby ID Number'}),
+           'so_date_created': forms.DateInput(attrs={'class':'form-control', 'placeholder':'mm/dd/yyyy'}),
+           'so_item_number': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Item Number'}),
+           'so_unit_price': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Unit Price'}),
+           'so_quantity': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Quantity'}),
+           'so_total_amount': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Total Amount'})}
+   
+    def save(self, commit=True):
+        # This is checking to see if the product has enough items in the stock order
+        order = super().save(commit=False)
+        if order.so_item_number.po_quantity < order.so_quantity:
+            raise ProductsStockException(f"Not enough products in inventory: {order.so_item_number}")
+        if commit:
+            order.save()
+        return order
