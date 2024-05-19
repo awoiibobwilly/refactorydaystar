@@ -48,7 +48,7 @@ class Sitter_Status(models.Model):
     sitter_availability = models.CharField(max_length=10, choices=[('On Duty', 'On Duty'), ('Off Duty', 'Off Duty')])
     sitter_time = models.TimeField()
     sitter_date = models.DateField()
-    def __str__(self):
+    def __int__(self):
         return self.sitter_id
 
 class Checkin(models.Model): 
@@ -63,10 +63,10 @@ class Checkin(models.Model):
     sitter_id = models.ForeignKey(Sitter_Register, on_delete=models.CASCADE)
     checkin_payment_choice = models.CharField(max_length=10, choices=[('Daily', 'Daily'), ('Weekly', 'Weekly'), ('Monthly', 'Monthly')])
     daystar_checkin_fee = models.IntegerField()
-    daystar_checkin_fee_currency = models.CharField(max_length= 10, default= 'UGX')
+    daystar_checkin_fee_currency = models.CharField(max_length= 10, choices=[('UGX', 'UGX'), ('USD', 'USD')], default= 'UGX')
     checkin_comment = models.CharField(max_length=1000)
 
-    def __str__(self):
+    def __int__(self):
         return self.baby_id
     
 
@@ -81,7 +81,7 @@ class Checkout(models.Model):
     sitter_id = models.ForeignKey(Sitter_Register, on_delete=models.CASCADE)
     checkout_payment_choice = models.CharField(max_length=10, choices=[('Daily', 'Daily'), ('Weekly', 'Weekly'), ('Monthly', 'Monthly'),])
     daystar_care_time_fee = models.IntegerField()
-    daystar_care_time_fee_currency = models.CharField(max_length= 10, default= 'UGX')
+    daystar_care_time_fee_currency = models.CharField(max_length= 10, choices=[('UGX', 'UGX'), ('USD', 'USD')], default= 'UGX')
     checkout_sitter_fee = models.IntegerField()
     checkout_sitter_fee_currency = models.CharField(max_length= 10, default= 'UGX')
     checkout_comment = models.CharField(max_length=1000)
@@ -89,32 +89,57 @@ class Checkout(models.Model):
     def __int__(self):
         return self.baby_id 
 
-class Procurement(models.Model):
+# class Procurement(models.Model):
+#     po_item_number = models.CharField(max_length=20)
+#     po_product_name = models.CharField(max_length=50)
+#     po_unit_cost = models.IntegerField()
+#     po_purchase_date = models.DateTimeField()
+#     po_entry_date = models.DateTimeField()
+#     po_quantity = models.PositiveSmallIntegerField()
+#     po_total_amount = models.IntegerField()
+
+#     def __int__(self):
+#         return self.po_item_number 
+
+
+# class Sales_Order(models.Model):
+#     so_baby_id = models.ForeignKey(Baby_Register, on_delete=models.CASCADE)
+#     so_date_created = models.DateTimeField()
+#     so_item_number = models.ForeignKey(Procurement, on_delete=models.CASCADE)
+#     so_unit_price = models.IntegerField()
+#     so_quantity = models.PositiveSmallIntegerField()
+#     so_total_amount = models.IntegerField()
+
+#     def __str__(self):
+#         return f'{self.so_quantity} x {self.so_item_number.po_item_number}'
+
+
+class Purchase(models.Model):
     po_item_number = models.CharField(max_length=20)
     po_product_name = models.CharField(max_length=50)
     po_unit_cost = models.IntegerField()
     po_purchase_date = models.DateTimeField()
     po_entry_date = models.DateTimeField()
     po_quantity = models.PositiveSmallIntegerField()
-    po_total_amount = models.IntegerField()
+    @property
+    def total(self):
+        return self.po_unit_cost*self.po_quantity
 
-    def __int__(self):
-        return self.po_item_number 
+    def __str__(self):
+        return self.po_item_number
 
-
-class Sales_Order(models.Model):
+class Sales(models.Model):
     so_baby_id = models.ForeignKey(Baby_Register, on_delete=models.CASCADE)
     so_date_created = models.DateTimeField()
-    so_item_number = models.ForeignKey(Procurement, on_delete=models.CASCADE)
+    so_item_number = models.ForeignKey(Purchase, on_delete=models.CASCADE)
     so_unit_price = models.IntegerField()
     so_quantity = models.PositiveSmallIntegerField()
-    so_total_amount = models.IntegerField()
+    @property
+    def total(self):
+        return self.so_unit_price*self.so_quantity
 
     def __str__(self):
         return f'{self.so_quantity} x {self.so_item_number.po_item_number}'
-
-
-
 
 
     

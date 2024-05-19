@@ -5,51 +5,65 @@
 
 
 {% block content %}
-
-
-<h1 class="text-center">BABY CHECK IN RECORD</h1>
-<div class "p-5" style = "font-size: 12px;">
+<!-- 
 <br>
+<br>
+<h4 class="text-center" style="background-color: rgb(238, 242, 240); margin-top: 12px; padding: 4px; border-radius: 25px">List of Registered Babies</h4>
+<div class "p-5" style = "font-size: 12px;">
+<br> -->
    
-    <table class="table table table-hover table-info">
-        <thead>
-          <tr>
-            <th scope="col">Baby ID No</th>
-            <th scope="col">Baby Sur Name</th>
-            <th scope="col">Baby Other Names</th>
-            <th scope="col">Baby Gender</th>
-            <th scope="col">Baby Date of Birth</th>
-            <th scope="col">Parent's Sur Name</th>
-            <th scope="col">Parent's Other Names</th>
-            <th scope="col">Parent's Gender</th>
-            <th scope="col">Parent's Date of Birth</th>
-            <th scope="col">Parent's Telephone</th>
-            <th scope="col">Parent's Location</th>
-            <th scope="col">Parent's Email</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for list in babylists %}
-          <tr>
-            <td>{{ list.id }}</td>
-            <td>{{ list.babiz_sur_name }}</td>
-            <td>{{ list.babiz_other_names }}</td>
-            <td>{{ list.babiz_gender }}</td>
-            <td>{{ list.babiz_date_of_birth }}</td>
-            <td>{{ list.parentz_sur_name }}</td>
-            <td>{{ list.parentz_other_names }}</td>
-            <td>{{ list.parentz_gender }}</td>
-            <td>{{ list.parentz_date_of_birth }}</td>
-            <td>{{ list.parentz_telephonee }}</td>
-            <td>{{ list.parentz_address }}</td>
-            <td>{{ list.parentz_email }}</td>
-            
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table> 
+<div class="container mt-4" style = "font-size: 12px; border-radius: 40px">
+  <h4  class="text-center text-black" style="background-color: rgb(238, 242, 240); padding: 4px; border-radius: 12px">List of Registered Babies</h4>
+  <div class="scrollable-div border p-3" style = "border-radius: 15px;">
+
+    <table class="table table table-hover table-light">
+      <thead>
+        <tr>
+          <th scope="col">Baby ID No</th>
+          <th scope="col">Baby Sur Name</th>
+          <th scope="col">Baby Other Names</th>
+          <th scope="col">Baby Gender</th>
+          <th scope="col">Baby Date of Birth</th>
+          <th scope="col">Parent's Sur Name</th>
+          <th scope="col">Parent's Other Names</th>
+          <th scope="col">Parent's Gender</th>
+          <th scope="col">Parent's Date of Birth</th>
+          <th scope="col">Parent's Telephone</th>
+          <th scope="col">Parent's Location</th>
+          <th scope="col">Parent's Email</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for list in babylists %}
+        <tr>
+          <td>{{ list.id }}</td>
+          <td>{{ list.babiz_sur_name }}</td>
+          <td>{{ list.babiz_other_names }}</td>
+          <td>{{ list.babiz_gender }}</td>
+          <td>{{ list.babiz_date_of_birth }}</td>
+          <td>{{ list.parentz_sur_name }}</td>
+          <td>{{ list.parentz_other_names }}</td>
+          <td>{{ list.parentz_gender }}</td>
+          <td>{{ list.parentz_date_of_birth }}</td>
+          <td>{{ list.parentz_telephonee }}</td>
+          <td>{{ list.parentz_address }}</td>
+          <td>{{ list.parentz_email }}</td>
+          <td><a class = "btn btn-sm btn-success" href="{% url 'editbabies' list.id %}" style = "font-size: 10px;">Edit</a></td>
+          <td><a class = "btn btn-sm btn-danger" href= "{% url 'deletbabies' list.id %}" style = "font-size: 10px;">Delete</a></td>
+          
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table> 
 </div>
 
+
+  </div>
+</div>
+
+   
 
 
 

@@ -15,12 +15,13 @@
     body {
         margin: 0;
         font-family: Arial, Helvetica, sans-serif;
-        background-color: rgb(211, 213, 214);
+        background-color: rgb(99, 189, 181);
+        font-size: 14px;
       }
       
       .topnav {
         overflow: hidden;
-        background-color: rgb(125, 124, 124);
+        background-color: rgb(21, 105, 111);
       }
       
       .topnav a {
@@ -30,18 +31,19 @@
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
-        font-size: 17px;
+        font-size: 14px;
+      
     
         
       }
       
       .topnav a:hover {
-        background-color: rgb(87, 210, 244);
-        color: rgb(0, 0, 0);
+        background-color: rgb(40, 40, 40);
+        color: rgb(238, 242, 240);
       }
       
       .topnav a:active {
-        background-color: rgb(248, 109, 3);
+        background-color: rgb(99, 189, 181);
         color: rgb(255, 255, 255);
       }
       
@@ -95,7 +97,7 @@
     margin: 0;
     padding: 0;
     width: 200px;
-    background-color: rgb(87, 210, 244);
+    background-color: rgb(21, 105, 111);
     position: fixed;
     height: 100%;
     overflow: auto;
@@ -104,21 +106,26 @@
   /* Sidebar links */
   .sidebar a {
     display: block;
-    color: rgb(0, 0, 0);
+    color: rgb(238, 242, 240);
     padding: 16px;
     text-decoration: none;
   }
   
+
+  .sidebar a:hover {
+    background-color: rgb(40, 40, 40);
+    color: rgb(238, 242, 240);
+  }
   /* Active/current link */
   .sidebar a:active {
-    background-color: rgb(0, 0, 0);
-    color: rgb(245, 245, 245);
+    background-color: rgb(99, 189, 181);
+    color: rgb(238, 242, 240);
   }
   
   /* Links on mouse-over */
   .sidebar a:hover:not(.active){
-    background-color: rgb(125, 124, 124);
-    color: white;
+    background-color: rgb(40, 40, 40);
+    color: rgb(238, 242, 240);
   }
   
   /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
@@ -152,9 +159,10 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: rgb(125, 124, 124);
+    background-color: rgb(40, 40, 40);
     color: white;
     text-align: center;
+    font-size: 12px;
  }
 
  .topnav input[type=text] {
@@ -169,7 +177,7 @@
 </head>
 <body>
     <div class="topnav sticky-top">
-        <a class="active" href="{% url 'homeats' %}">Home</a>
+        <a class="active" href="/home/">Home</a>
         <a class="active" href="{% url 'babyregistrationats' %}">Baby Registration</a>
         <a class="active" href="{% url 'sitterregistrationats' %}">Sitter Registration</a>
         <a class="active" href="{% url 'sitterstatusats' %}">Sitter In</a>
@@ -178,17 +186,21 @@
         <a class="active" href="{% url 'purchaseorderats' %}">Purcahse Orders</a>
         <a class="active" href="{% url 'salesorderats' %}">Sales Orders</a>
         <a class="active" href="{% url 'editinfoats' %}">Edit</a>
-        <a class="active" href="#about">Logout</a>
+        <a class="active" href="{% url 'logout' %}">Logout</a>
+        <a class="active" href="/search/"><i class="fa fa-search"></i>&nbsp;&nbsp;Search</a>
+
         <div class="search-container">
-          <form action="/action_page.php">
-            <input type="text" placeholder="Search.." name="search">
+          {% csrf_token %}
+          <form method="get" action="">
+            <input type="text" placeholder="Search.." name="querry">
             <button type="submit"><i class="fa fa-search"></i></button>
           </form>
         </div>
       </div>
 
+
     <div class="sidebar mvh-100%">
-        <a class="active" href="{% url 'homeats' %}">DAYSTAR</a>
+        <a class="active" href="/homeat/">DAYSTAR</a>
         <a class="active" href="/dashboard/">Dashbaord</a>
         <a class="active" href= "/babylist/">Baby Record</a>
         <a class="active" href="{% url 'sitterlistats' %}">Sitter Record</a>
@@ -215,8 +227,8 @@
 
 
   <div class="footer">
-    <p> &#x7c; &nbsp;Powered By: Awoii Tech Systems  &nbsp; &#x7c; &nbsp; P.O. Box 237 Ntinda &nbsp; &#x7c; &nbsp;Telephone: +256 752 616 406 &nbsp; &#x7c; </p>
-    <p> <span><a class = "text-white" href="mailto:awoiibobwilly@gmail.com"> &#x7c; &nbsp; awoiibobwilly@gmail.com </a></span>&nbsp; &#x7c; &nbsp; 2004 Copy Right &nbsp; &#x7c; &nbsp; All Rights Reserved &nbsp; &#x7c;</p>
+    <p> &#x7c; &nbsp;Powered By: Awoii Tech Systems  &nbsp; &#x7c; &nbsp; P.O. Box 237 Ntinda &nbsp; &#x7c; &nbsp;Telephone: +256 752 616 406 &nbsp; &#x7c; <span><a class = "text-white" href="mailto:awoiibobwilly@gmail.com"> &nbsp; awoiibobwilly@gmail.com </a></span>&nbsp; &#x7c; &nbsp; 2004 Copy Right &nbsp; &#x7c; &nbsp; All Rights Reserved &nbsp; &#x7c;</p>
+    <p> </p>
        
   </div>
   

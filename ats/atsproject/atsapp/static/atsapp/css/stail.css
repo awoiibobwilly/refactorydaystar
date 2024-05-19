@@ -1,7 +1,9 @@
-.body {
+/* .body {
   font-family: -apple-system, 
   BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
-}
+} */
+
+
 
 
 
@@ -125,41 +127,8 @@ user-select: none;
 margin-right: 0px !important
 }
 
-.daystarfooter{
-margin:0px;
-padding:0px;
-display: flex;
-min-width:100%;
-max-width:100%;
-background:rgb(50, 60, 100);
-height:auto;
-}
 
 
-
-.daystarfooter{
-    margin:0px;
-    padding:0px;
-    color: white;
-    display: flex;
-    min-width:100%;
-    max-width:100%;
-    background:rgb(50, 60, 100);
-    height:auto;
-    justify-content: center;
-  }
-
-  /* styling baby registration form starts*/
-
-  .daycare_forms{
-    width: 50%;
-    margin: 10% auto;
-    background-color: rgb(87, 210, 244);
-    color:rgb(0, 0, 0);
-    padding: 20px;
-    border-radius: 25px;
-    
-}
 
 .errorlist {
     list-style: none !important;
@@ -173,3 +142,35 @@ height:auto;
 }
 
  /* styling baby registration form ends*/
+
+
+
+  /* styling baby registration form starts*/
+
+  /* .daycare_forms{
+    width: 50%;
+    margin: 10% auto;
+    background-color: rgb(87, 210, 244);
+    color:rgb(0, 0, 0);
+    padding: 20px;
+    border-radius: 25px;
+    
+} */
+
+  /* styling baby registration form starts*/
+
+
+ /* Styling Model Forms starts */
+
+ .form-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.form-container .form-column {
+  flex: 1;
+  min-width: 200px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+ /* Styling Model Forms starts */

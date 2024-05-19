@@ -1,0 +1,101 @@
+{% extends 'atsapp/base.html' %} 
+{% load static %}
+
+
+
+
+{% block content %}
+
+
+
+<div class="container mt-4" style = "font-size: 12px; border-radius: 40px">
+    <h4  class="text-center text-black" style="background-color: rgb(238, 242, 240); padding: 4px; border-radius: 12px">Search List of Registered Babies</h4>
+    <div class="scrollable-div border p-3" style = "border-radius: 15px;">
+  
+      <table class="table table table-hover table-light">
+        <thead>
+          <tr>
+            <th scope="col">Baby ID No</th>
+            <th scope="col">Baby Sur Name</th>
+            <th scope="col">Baby Other Names</th>
+            <th scope="col">Baby Gender</th>
+            <th scope="col">Baby Date of Birth</th>
+            <th scope="col">Parent's Sur Name</th>
+            <th scope="col">Parent's Other Names</th>
+            <th scope="col">Parent's Gender</th>
+            <th scope="col">Parent's Date of Birth</th>
+            <th scope="col">Parent's Telephone</th>
+            <th scope="col">Parent's Location</th>
+            <th scope="col">Parent's Email</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% if babylists %}
+
+          {% for list in babylists %}
+          <tr>
+            <td>{{ list.id }}</td>
+            <td>{{ list.babiz_sur_name }}</td>
+            <td>{{ list.babiz_other_names }}</td>
+            <td>{{ list.babiz_gender }}</td>
+            <td>{{ list.babiz_date_of_birth }}</td>
+            <td>{{ list.parentz_sur_name }}</td>
+            <td>{{ list.parentz_other_names }}</td>
+            <td>{{ list.parentz_gender }}</td>
+            <td>{{ list.parentz_date_of_birth }}</td>
+            <td>{{ list.parentz_telephonee }}</td>
+            <td>{{ list.parentz_address }}</td>
+            <td>{{ list.parentz_email }}</td>
+            <td><a class = "btn btn-sm btn-success" href="" style = "font-size: 10px;">Edit</a></td>
+            <td><a class = "btn btn-sm btn-danger" href="" style = "font-size: 10px;">Delete</a></td>
+          </tr>
+
+          {% endfor %}
+
+          {% else %}
+          <p>The Baby you are searching for is not in the Baby List</p>
+          {% endif %}
+        </tbody>
+      </table> 
+  </div>
+  
+  
+    </div>
+  </div>
+
+
+
+<!-- <br>
+<div class="card text-center">
+    <div class="card-header">
+      Daystar Daycare Records
+    </div>
+    <div class="card-body">
+        <div class="search-container">
+
+            {% csrf_token %}
+
+            <form method="POST" action="{% url 'search' %}">
+                <div class="mb-3 row">
+                    <input type="text" placeholder="Search.." name="searched" class="form-control" style="width: 90%;">
+                    <button type="submit" class="btn btn-light" style="display: inlineblock; width: 10%;"><i class="fa fa-search"></i>&nbsp;&nbsp;Search</button>
+                </div>
+            </form>
+
+            {% if searched %}
+        
+            You have searched for something {{ searched }}
+        
+            {% endif %} 
+        </div>
+    </div>
+    <div class="card-footer text-body-secondary">
+      2 days ago
+    </div>
+  </div> -->
+
+
+
+{% endblock %}

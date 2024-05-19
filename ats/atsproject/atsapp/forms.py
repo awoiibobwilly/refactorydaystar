@@ -1,3 +1,4 @@
+from django.contrib import admin
 from django import forms
 from django.forms import ModelForm
 from .models import *
@@ -152,7 +153,7 @@ class CheckinForm(ModelForm):
             'daystar_checkin_fee_currency': forms.Select(attrs={'class': 'form-control','placeholder':'UGX'}),
             'checkin_comment': forms.Textarea(attrs={'class':'form-control','placeholder':'Thanks for your service'})}
 
-        def __str__(self):
+        def __int__(self):
             return self.baby_id
 
 
@@ -195,26 +196,80 @@ class CheckoutForm(ModelForm):
         def __str__(self):
             return self.baby_id
 
-class ProcurementForm(ModelForm):
+# class ProcurementForm(ModelForm):
+#     class Meta:
+#         model = Procurement
+#         fields = ('po_item_number','po_product_name','po_unit_cost','po_purchase_date','po_entry_date','po_quantity','po_total_amount')
+#         labels = {
+#         'po_item_number':'Item Number',
+#         'po_product_name':'Product Name',
+#         'po_unit_cost':'Unit Cost',
+#         'po_purchase_date':'Date of Purchase',
+#         'po_entry_date':'Date of Entry',
+#         'po_quantity':'Quantity',
+#         'po_total_amount':'Total Amount'}
+#         widgets = {
+#             'po_item_number': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Item Number'}),
+#             'po_product_name': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Product Name'}),
+#             'po_unit_cost': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Unit Cost'}),
+#             'po_purchase_date': forms.DateInput(attrs={'class':'form-control', 'placeholder':'mm/dd/yyyy'}),
+#             'po_entry_date': forms.DateInput(attrs={'class':'form-control', 'placeholder':'mm/dd/yyyy'}),
+#             'po_quantity': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Quantity'}),
+#             'po_total_amount': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Total Amount'})}
+
+#         def __str__(self):
+#             return self.po_item_number
+
+# class ProductsStockException(Exception):
+#     pass
+
+# class Sales_OrderForm(ModelForm):
+#     class Meta:
+#         model = Sales_Order
+#         fields = ('so_baby_id','so_date_created','so_item_number','so_unit_price','so_quantity','so_total_amount')
+#         labels = {
+#             'so_baby_id':'Baby ID Number',
+#             'so_date_created':'Date Created',
+#             'so_item_number':'Item Number',
+#             'so_unit_price':'Unit Price',
+#             'so_quantity':'Quantity',
+#             'so_total_amount':'Total Amount'}
+#         widgets = {
+#            'so_baby_id': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Baby ID Number'}),
+#            'so_date_created': forms.DateInput(attrs={'class':'form-control', 'placeholder':'mm/dd/yyyy'}),
+#            'so_item_number': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Item Number'}),
+#            'so_unit_price': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Unit Price'}),
+#            'so_quantity': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Quantity'}),
+#            'so_total_amount': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Total Amount'})}
+   
+#     def save(self, commit=True):
+#         # This is checking to see if the product has enough items in the stock order
+#         order = super().save(commit=False)
+#         if order.so_item_number.po_quantity < order.so_quantity:
+#             raise ProductsStockException(f"Not enough products in inventory: {order.so_item_number}")
+#         if commit:
+#             order.save()
+#         return order
+
+
+class PurchaseForm(ModelForm):
     class Meta:
-        model = Procurement
-        fields = ('po_item_number','po_product_name','po_unit_cost','po_purchase_date','po_entry_date','po_quantity','po_total_amount')
+        model = Purchase
+        fields = ('po_item_number','po_product_name','po_unit_cost','po_purchase_date','po_entry_date','po_quantity')
         labels = {
         'po_item_number':'Item Number',
         'po_product_name':'Product Name',
         'po_unit_cost':'Unit Cost',
         'po_purchase_date':'Date of Purchase',
         'po_entry_date':'Date of Entry',
-        'po_quantity':'Quantity',
-        'po_total_amount':'Total Amount'}
+        'po_quantity':'Quantity'}
         widgets = {
             'po_item_number': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Item Number'}),
             'po_product_name': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Product Name'}),
             'po_unit_cost': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Unit Cost'}),
             'po_purchase_date': forms.DateInput(attrs={'class':'form-control', 'placeholder':'mm/dd/yyyy'}),
             'po_entry_date': forms.DateInput(attrs={'class':'form-control', 'placeholder':'mm/dd/yyyy'}),
-            'po_quantity': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Quantity'}),
-            'po_total_amount': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Total Amount'})}
+            'po_quantity': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Quantity'})}
 
         def __str__(self):
             return self.po_item_number
@@ -222,24 +277,22 @@ class ProcurementForm(ModelForm):
 class ProductsStockException(Exception):
     pass
 
-class Sales_OrderForm(ModelForm):
+class SalesForm(ModelForm):
     class Meta:
-        model = Sales_Order
-        fields = ('so_baby_id','so_date_created','so_item_number','so_unit_price','so_quantity','so_total_amount')
+        model = Sales
+        fields = ('so_baby_id','so_date_created','so_item_number','so_unit_price','so_quantity')
         labels = {
             'so_baby_id':'Baby ID Number',
             'so_date_created':'Date Created',
             'so_item_number':'Item Number',
             'so_unit_price':'Unit Price',
-            'so_quantity':'Quantity',
-            'so_total_amount':'Total Amount'}
+            'so_quantity':'Quantity'}
         widgets = {
            'so_baby_id': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Baby ID Number'}),
            'so_date_created': forms.DateInput(attrs={'class':'form-control', 'placeholder':'mm/dd/yyyy'}),
            'so_item_number': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Item Number'}),
            'so_unit_price': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Unit Price'}),
-           'so_quantity': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Quantity'}),
-           'so_total_amount': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Total Amount'})}
+           'so_quantity': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Quantity'})}
    
     def save(self, commit=True):
         # This is checking to see if the product has enough items in the stock order
@@ -249,3 +302,29 @@ class Sales_OrderForm(ModelForm):
         if commit:
             order.save()
         return order
+
+
+class PurchaseAdmin(admin.ModelAdmin):
+    list_display = {
+        'po_item_number':'Item Number',
+        'po_product_name':'Product Name',
+        'po_unit_cost':'Unit Cost',
+        'po_purchase_date':'Date of Purchase',
+        'po_entry_date':'Date of Entry',
+        'po_quantity':'Quantity'}
+
+    def total(self, obj):
+        return obj.total
+    total.short_description = 'Total Price'
+
+class SalesAdmin(admin.ModelAdmin):
+    list_display = {
+        'so_baby_id':'Baby ID Number',
+        'so_date_created':'Date Created',
+        'so_item_number':'Item Number',
+        'so_unit_price':'Unit Price',
+        'so_quantity':'Quantity'}
+
+    def total(self, obj):
+        return obj.total
+    total.short_description = 'Total Price'
