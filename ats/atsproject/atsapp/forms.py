@@ -3,25 +3,7 @@ from django import forms
 from django.forms import ModelForm
 from .models import *
 
-#This is Baby Registration Form
-
-# class User_RegistrationForm(forms.ModelForm):
-#     class Meta:
-#         model = User_Registration
-#         fields = ('username', 'email', 'new_password', 'confirm_password')
-#         labels = {
-#             'username':'Username',
-#             'email':'Email',
-#             'new_password':'New Password',
-#             'confirm_password':'Confirm Password'}
-#         widgets = {
-#             'username': forms.TextInput(attrs={'class':'form-control', 'placeholder':'mukaroberts'}),
-#             'email': forms.EmailInput(attrs={'class':'form-control', 'placeholder':'mukaroberts@gmail.com'}),
-#             'new_password': forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'********'}),
-#             'confirm_password': forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'********'})}
             
-
-
 
 class Baby_RegisterForm(ModelForm):
     class Meta:
@@ -55,7 +37,6 @@ class Baby_RegisterForm(ModelForm):
         def __str__(self):
             return self.babiz_sur_name
        
-#This is Baby Sitter Registration Form
 
 class Sitter_RegisterForm(ModelForm):
     class Meta:

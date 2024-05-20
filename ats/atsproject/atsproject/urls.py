@@ -39,6 +39,5 @@ urlpatterns = [
     path('sitterlist/', include('atsapp.urls')),
     path('sitterregistration/', include('atsapp.urls')),
     path('dashboard/', include('atsapp.urls')),
-    path('search/', include('atsapp.urls')),
-   
+  
 ]

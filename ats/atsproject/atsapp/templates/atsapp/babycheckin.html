@@ -5,24 +5,71 @@
 {% block content %}
 
 <div class="">
-  <br>
-  <h1 class="text-center">BABY CHECKIN</h1>
+  <h4 class=" h4heading text-center">BABY CHECKIN</h4>
   {% if submitted %}
 
     You Have Successfully Checked In Baby!
 
   {% else %}
-<div class="daycare_forms row g-3">
 
-    <form class="" action="" method="POST">
-      {% csrf_token %}
+  <form class="" action="" method="POST">
+
+    {% csrf_token %}
+
+    <div class="form-container p-3" style="width: 70%; margin-left: 15%; border-radius: 20px; background-color: rgb(238,242,255);">
+      <div class="form-column">
+        <label for="id_baby_id">Baby ID Number</label><br>
+        {{ form.baby_id }}<br>
+        
+        <label for="id_checkin_sitter_availability">Sitter Availability</label><br>
+        {{ form.checkin_sitter_availability }}<br>
+
+        <label for="id_checkin_time">Checkin Time</label><br>
+        {{ form.checkin_time }}<br>
+        
+        <label for="id_checkin_date">Checkin Date</label><br>
+        {{ form.checkin_date }}<br>
+        
+        <label for="id_checkin_care_time">Care Time</label><br>
+        {{ form.checkin_care_time }}<br>
+        
+        <label for="id_checkin_guardians_sur_name">Guardians Surname</label><br>
+        {{ form.checkin_guardians_sur_name }}<br>
+        
+        <label for="id_checkin_guardians_other_names">Guardians Other Names</label><br>
+        {{ form.checkin_guardians_other_names }}<br>
+
+        <label for="id_checkin_guardians_telephone">Guardians Telephone</label><br>
+        {{ form.checkin_guardians_telephone }}<br>
+        
+      </div>
+
+    
+
+      <div class="form-column">
+  
+    
+        <label for="id_checkin_payment_choice">Payment Choice</label><br>
+        {{ form.checkin_payment_choice }}<br>
+    
+        <label for="id_sitter_id">Sitter ID Number</label><br>
+        {{ form.sitter_id }}<br>
+    
+        <label for="id_daystar_checkin_fee">Daystar Checkin Fee</label><br>
+        {{ form.daystar_checkin_fee }}<br>
+    
+        <label for="id_daystar_checkin_fee_currency">Daystar Checkin Fee Currency</label><br>
+        {{ form.daystar_checkin_fee_currency }}<br>
+
+        <label for="id_checkin_comment">Daystar Checkin Fee Currency</label><br>
+        {{ form.checkin_comment }}<br>
+    
+
+      </div>
       
-        {{ form.as_p }}
-     
-      <input type="submit" value="Submit" class="btn btn-secondary">
-    </form>
-
-</div>
+  </div>
+  <input type="submit" value="Submit" class="btn btn-light mt-3" style="margin-left: 40%; width: 20%;">
+  </form>
   
 
   {% endif %}

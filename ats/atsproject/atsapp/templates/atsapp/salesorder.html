@@ -5,21 +5,20 @@
 {% block content %}
 
 <div class="">
-  <br>
-  <h1 class="text-center">Generate Sales</h1>
+  <h4 class="mheading" >Generate New Sales Order Here</h4>
   {% if submitted %}
 
     Sales Order Was Successfully Created!
 
   {% else %}
-<div class="daycare_forms row g-3">
+<div class="daycare_forms row g-3" >
 
     <form class="" action="" method="POST">
       {% csrf_token %}
       
         {{ form.as_p }}
      
-      <input type="submit" value="Submit" class="btn btn-secondary">
+        <input type="submit" value="Submit" class="btn btn-secondary" style="margin-left: 40%; width: 25%; border-radius: 20px; background-color:rgb(21, 105, 111)">
     </form>
 
 </div>
