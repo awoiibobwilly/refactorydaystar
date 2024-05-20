@@ -4,11 +4,123 @@
  
 {% block content %}
 
-<form action="" method="POST">
+<br>
+
+<form class="" action="" method="POST">
   {% csrf_token %}
-{{ form }}
-<input type="submit" value="update task">
+
+  <h4 class="h4heading">Edit Baby List</h4>
+  <div class="form-container p-3" style="width: 70%; margin-left: 15%; border-radius: 20px; background-color: rgb(238,242,255);">
+    <div class="form-column">
+      <label for="id_babiz_sur_name">Baby Surname</label><br>
+      {{ form.babiz_sur_name }}<br>
+      
+      <label for="id_babiz_other_names">Baby Other Names</label><br>
+      {{ form.babiz_other_names }}<br>
+
+      <label for="id_babiz_gender">Baby Gender</label><br>
+      {{ form.babiz_gender }}<br>
+      
+      <label for="id_babiz_date_of_birth">Baby Date of Birth</label><br>
+      {{ form.babiz_date_of_birth }}<br>
+      
+      <label for="id_parentz_sur_name">Parent Surname</label><br>
+      {{ form.parentz_sur_name }}<br>
+      
+      <label for="id_parentz_other_names">Parent Other Names</label><br>
+      {{ form.parentz_other_names }}<br>
+    </div>
+
+    <div class="form-column">
+      <label for="id_babiz_sur_name">Parent Gender</label><br>
+      {{ form.parentz_gender }}<br>
+  
+      <label for="id_babiz_other_names">Parent Date of Birth</label><br>
+      {{ form.parentz_date_of_birth }}<br>
+  
+      <label for="id_babiz_gender">Parent Date of Birth</label><br>
+      {{ form.parentz_telephone }}<br>
+  
+      <label for="id_babiz_date_of_birth">Parent Telephone</label><br>
+      {{ form.parentz_address }}<br>
+  
+      <label for="id_parentz_sur_name">Parent Location</label><br>
+      {{ form.parentz_email }}<br>
+
+    </div>
+    
+</div>
+<input type="submit" value="Submit" class="btn btn-light mt-3" style="margin-left: 40%; width: 20%;" value="update task">
+  
 </form>
+<br><br><br><br>
+
+<h4 class="h4heading">Edit Sitter List</h4>
+<form class="" action="" method="POST">
+
+  {% csrf_token %}
+
+  <div class="form-container p-3" style="width: 70%; margin-left: 15%; border-radius: 20px; background-color: rgb(238,242,255);">
+    <div class="form-column">
+      <label for="id_sit_sur_name">Sitter Surname</label><br>
+      {{ form.sit_sur_name }}<br>
+      
+      <label for="id_sit_other_names">Sitter Other Names</label><br>
+      {{ form.sit_other_names }}<br>
+
+      <label for="id_sit_gender">Sitter Gender</label><br>
+      {{ form.sit_gender }}<br>
+      
+      <label for="id_sit_date_of_birth">Sitter Date of Birth</label><br>
+      {{ form.sit_date_of_birth }}<br>
+      
+      <label for="id_sit_nin_number">NIN Number</label><br>
+      {{ form.sit_nin_number }}<br>
+      
+      <label for="id_sit_educlevel">Education Level</label><br>
+      {{ form.sit_educlevel }}<br>
+      
+      <label for="id_sit_religion">Sitter Religion</label><br>
+      {{ form.sit_religion }}<br>
+      
+      <label for="id_sit_address">Sitter Address</label><br>
+      {{ form.sit_address }}<br>
+      
+      <label for="id_sit_email">Sitter Email</label><br>
+      {{ form.sit_email }}<br>
+    </div>
+
+    <div class="form-column">
+      <label for="id_sit_telephone">Sitter Telephone</label><br>
+      {{ form.sit_telephone }}<br>
+  
+      <label for="id_snok_sur_name">Next Of Kin Surname</label><br>
+      {{ form.snok_sur_name }}<br>
+  
+      <label for="id_snok_other_names">Next Of Kin Other Names</label><br>
+      {{ form.snok_other_names }}<br>
+  
+      <label for="id_snok_gender">Next Of Kin Gender</label><br>
+      {{ form.snok_gender }}<br>
+  
+      <label for="id_snok_date_of_birth">Next Of Kin Date of Birth</label><br>
+      {{ form.snok_date_of_birth }}<br>
+      <label for="id_snok_address">Next Of Kin Address</label><br>
+      {{ form.snok_address }}<br>
+  
+      <label for="id_snok_email">Next Of Kin Email</label><br>
+      {{ form.snok_email }}<br>
+  
+      <label for="id_snok_telephone">Next Of Kin Telephone</label><br>
+      {{ form.snok_telephone }}<br>
+
+    </div>
+    
+</div>
+<input type="submit" value="Submit" class="btn btn-light mt-3" style="margin-left: 40%; width: 20%;">
+</form>
+
+
   
 {% endblock %} 
 

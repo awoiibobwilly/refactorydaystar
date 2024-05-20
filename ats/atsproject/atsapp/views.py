@@ -32,7 +32,7 @@ from functools import partial
 #             query = form.cleaned_data['query']
 #             results = Baby.objects.filter(Q(babiz_sur_name__icontains=query) | Q(babiz_other_names__icontains=query))
 #     return render(request, 'search.html', {'form':form, 'results':results})
-
+@login_required
 def email_user(email):
     print(f"Dear {email}, An invoice has been raised in your name. Please, if you have not placed any order, reachout to us for more information")
 
@@ -66,6 +66,7 @@ def baby_registration(request):
             submitted = True
     return render(request, 'atsapp/babyregistration.html', {'form':form, 'submitted':submitted})
 
+@login_required
 def deletbabies(request, baby_id):
     Baby_Register.objects.filter(id=baby_id).delete()
     return redirect('babylist')
@@ -116,9 +117,27 @@ def sitter_registration(request):
             submitted = True
     return render(request, 'atsapp/sitterregistration.html', {'form':form, 'submitted':submitted})
 
+@login_required
+def sitterrecords(request):
+    sitterlists = Sitter_Register.objects.all()
+    return render(request, 'atsapp/sitterlist.html', {'sitterlists': sitterlists})
+    
+@login_required
+def deletesitters(request, sitter_id):
+    Sitter_Register.objects.filter(id=sitter_id).delete()
+    return redirect('sitterlist')
 
-
-
+@login_required
+def editsitters(request, sitter_id):
+    sitter = get_object_or_404(Sitter_Register, pk=sitter_id)
+    if request.method == 'POST':
+        form = Sitter_RegisterForm(request.POST, instance=sitter)
+        if form.is_valid():
+            form.save()
+            return redirect('sitterlist')
+    else:
+        form = Sitter_RegisterForm(instance=sitter)
+    return render(request, 'atsapp/editinfo.html', {'form':form})
 # @login_required
 # def editbaby(request):
 #     submitted = False
@@ -135,10 +154,14 @@ def sitter_registration(request):
 
 
     
-@login_required
-def sitterrecords (request):
-    sitterlists = Sitter_Register.objects.all()
-    return render(request, 'atsapp/sitterlist.html', {'sitterlists':sitterlists})
+# @login_required
+# def sitterrecords (request):
+#     sitterlists = Sitter_Register.objects.all()
+#     return render(request, 'atsapp/sitterlist.html', {'sitterlists':sitterlists})
+
+    
+
+
 @login_required
 def sitter_presence(request):
     submitted = False

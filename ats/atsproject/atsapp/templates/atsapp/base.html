@@ -9,44 +9,55 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <link rel="stylesheet" href="{% static 'atsapp/css/stail.css' %}">
-<title>Title</title>
+<title>Daystar Daycare </title>
 
 
 </head>
 <body>
-    <div class="topnav sticky-top">
-        <a class="active" href="/home/">Home</a>
-        <a class="active" href="{% url 'babyregistrationats' %}">Baby Registration</a>
-        <a class="active" href="{% url 'sitterregistrationats' %}">Sitter Registration</a>
-        <a class="active" href="{% url 'sitterstatusats' %}">Sitter In</a>
-        <a class="active" href="{% url 'babycheckinats' %}">Baby Checkin</a>
-        <a class="active" href="{% url 'babycheckoutats' %}">Baby Checkout</a>
-        <a class="active" href="{% url 'purchaseorderats' %}">Purcahse Orders</a>
-        <a class="active" href="{% url 'salesorderats' %}">Sales Orders</a>
-        <a class="active" href="{% url 'editinfoats' %}">Edit</a>
-        <a class="active" href="{% url 'logout' %}">Logout</a>
-       
+  
+    <div class="container-fluid topnav sticky-top p-0">
+      <nav class="navbar navbar-expand-sm" style="background-color:  rgb(21, 105, 111);;">
+        <div class="container-fluid">
+          <a class="navbar-brand p-3" href="/homeat/" style="width: 150px;"><img class ="p-0" src="{% static 'atsapp/images/baby-image_09-01.png' %}" alt="" style="width:50%;"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-        <div class="search-container">
-          {% csrf_token %}
-          <form method="get" action="">
-            <input type="text" placeholder="Search.." name="querry">
-            <button type="submit"><i class="fa fa-search"></i></button>
-          </form>
+          <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+              <li class="nav-item"><a class="class="nav-link"" href="/babyregistration/">Baby Registration</a> </li>
+              <li class="nav-item"><a class="class="nav-link"" href="/sitterregistration/">Sitter Registration</a> </li>
+              <li class="nav-item"><a class="class="nav-link"" href="/sitterstatus/">Sitter Checkin/Checkout</a></li>
+              <li class="nav-item"><a class="class="nav-link"" href="/babycheckin/">Baby Checkin</a></li>
+              <li class="nav-item"><a class="class="nav-link"" href="/babycheckout/">Baby Checkout</a> </li>
+              <li class="nav-item"><a class="class="nav-link"" href="/purchaseorder/">Purcahse Orders</a></li>
+              <li class="nav-item"> <a class="class="nav-link"" href="/salesorder/">Sales Orders</a></li>
+              <li class="nav-item"> <a class="class="nav-link"" href="/editinfo/">Edit</a> </li>
+              <li class="nav-item"> <a class="class="nav-link"" href="/logout/">Logout</a></li>
+              <!-- <div class="search-container">
+                {% csrf_token %}
+                <form method="get" action="">
+                  <input type="text" placeholder="Search.." name="querry">
+                  <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+              </div> -->
+          </div>
         </div>
-      </div>
-
-
+      </nav>
+    </div>
+      
+     
     <div class="sidebar mvh-100%">
-        <a class="active" href="/homeat/">DAYSTAR</a>
-        <a class="active" href="/dashboard/">Dashbaord</a>
-        <a class="active" href= "/babylist/">Baby Record</a>
-        <a class="active" href="{% url 'sitterlistats' %}">Sitter Record</a>
-        <a class="active" href="{% url 'financereportats' %}">Finance Report</a>
-        <a class="active" href="{% url 'salesreportats' %}">Sales Report</a>
-        <a class="active" href="{% url 'inventoryats' %}">Inventory</a>
-        <a class="active" href="{% url 'bcheckinrecordats' %}">Checkin Record</a>
-        <a class="active" href="{% url 'bcheckoutrecordats' %}">Checkout</a>
+        <a class="active" href="/homeat/">DAYSATR DAYCARE</a>
+        <!-- <a class="" href=""><img src="{% static 'atsapp/dashboard_icon_two.svg' %}" alt="" style="width:10%;">&nbsp;&nbsp;</a> -->
+        <a class="" href= "/dashboard/"><img src="{% static 'atsapp/images/dashboard_icon_two.svg' %}" alt="" style="width:15%;">&nbsp;&nbsp;Dashboard</a>
+        <a class="" href= "/babylist/"><img src="{% static 'atsapp/images/baby_icon_two.svg' %}" alt="" style="width:15%;">&nbsp;&nbsp;Baby Record</a>
+        <a class="" href="{% url 'sitterlist' %}"><img src="{% static 'atsapp/images/sitter_icon_two.svg' %}" alt="" style="width:15%;">&nbsp;&nbsp;Sitter Record</a>
+        <a class="" href="/financereport/"><img src="{% static 'atsapp/images/finance_icon_two.svg' %}" alt="" style="width:15%;">&nbsp;&nbsp;Finance Report</a>
+        <a class="" href="/salesreport/"><img src="{% static 'atsapp/images/sales_icon_two.svg' %}" alt="" style="width:15%;">&nbsp;&nbsp;Sales Report</a>
+        <a class="" href="/inventory/"><img src="{% static 'atsapp/images/inventory_icon_two.svg' %}" alt="" style="width:15%;">&nbsp;&nbsp;Inventory</a>
+        <a class="" href="/bcheckinrecord/"><img src="{% static 'atsapp/images/checkin_icon_two.svg' %}" alt="" style="width:15%;">&nbsp;&nbsp;Checkin Record</a>
+        <a class="" href="/bcheckoutrecord/"><img src="{% static 'atsapp/images/checkout_icon_two.svg' %}" alt="" style="width:17%;">&nbsp;&nbsp;Checkout Record</a>
         
       </div>
       
@@ -57,7 +68,7 @@
 <div class="content">
 
     {% block content %}
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident laudantium tenetur perspiciatis ratione odio, quaerat rerum quidem quo delectus harum corporis dignissimos amet recusandae laboriosam, excepturi itaque pariatur perferendis iste!</p>
+        
         
     {% endblock %}
 

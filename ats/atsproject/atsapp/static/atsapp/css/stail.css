@@ -13,7 +13,7 @@ body {
 
 .topnav {
   overflow: hidden;
-  background-color: rgb(21, 105, 111);
+  /* background-color: rgb(21, 105, 111); */
 }
 
 .topnav a {
@@ -124,7 +124,7 @@ color: rgb(238, 242, 240);
 div.content {
 margin-left: 200px;
 padding: 1px 16px;
-height: 1000px;
+height: 1800px;
 }
 
 /* On screens that are less than 700px wide, make the sidebar into a topbar */

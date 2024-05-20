@@ -4,81 +4,92 @@
  
 {% block content %}
 
-<div class="">
-  
-  <h4 class="h4heading text-center">BABY CHECKOUT</h4>
-  {% if submitted %}
+<div class="container mt-4" style = "font-size: 12px; border-radius: 40px">
+  <div class="border p-3 overflow-scroll" style = "border-radius: 15px;">
+    <div class="">
 
-  You Have Successfully Checked Out Baby!
-
-  {% else %}
-
-
-  <form class="" action="" method="POST">
-
-    {% csrf_token %}
-
-    <div class="form-container p-3" style="width: 70%; margin-left: 15%; border-radius: 20px; background-color: rgb(238,242,255);">
-      <div class="form-column">
-        <label for="id_baby_id">Baby ID Number</label><br>
-        {{ form.baby_id }}<br>
+      <h4 class="h4heading">Checkout Baby Here</h4>
+      {% if submitted %}
+    
+      You Have Successfully Checked Out Baby!
+    
+      {% else %}
+    
+    
+      <form class="" action="" method="POST">
+    
+        {% csrf_token %}
+    
+        <div class="form-container p-3" style="width: 70%; margin-left: 15%; border-radius: 20px; background-color: rgb(238,242,255);">
+          <div class="form-column">
+            <label for="id_baby_id">Baby ID Number</label><br>
+            {{ form.baby_id }}<br>
+            
+            <label for="id_checkout_time">checkout Time</label><br>
+            {{ form.checkout_time }}<br>
+            
+            <label for="id_checkout_date">checkout Date</label><br>
+            {{ form.checkout_date }}<br>
+            
+            <label for="id_checkout_care_time">Care Time</label><br>
+            {{ form.checkout_care_time }}<br>
+            
+            <label for="id_checkout_guardians_sur_name">Guardians Surname</label><br>
+            {{ form.checkout_guardians_sur_name }}<br>
+            
+            <label for="id_checkout_guardians_other_names">Guardians Other Names</label><br>
+            {{ form.checkout_guardians_other_names }}<br>
+    
+            <label for="id_checkout_guardians_telephone">Guardians Telephone</label><br>
+            {{ form.checkout_guardians_telephone }}<br>
+    
+            <label for="id_checkout_payment_choice">Payment Choice</label><br>
+            {{ form.checkout_payment_choice }}<br>
+            
+          </div>
+    
         
-        <label for="id_checkout_time">checkout Time</label><br>
-        {{ form.checkout_time }}<br>
         
-        <label for="id_checkout_date">checkout Date</label><br>
-        {{ form.checkout_date }}<br>
+    
+          <div class="form-column">
         
-        <label for="id_checkout_care_time">Care Time</label><br>
-        {{ form.checkout_care_time }}<br>
+            <label for="id_sitter_id">Sitter ID Number</label><br>
+            {{ form.sitter_id }}<br>
+    
+            <label for="id_daystar_care_time_fee">Daystar Care Time Fee</label><br>
+            {{ form.daystar_care_time_fee }}<br>
         
-        <label for="id_checkout_guardians_sur_name">Guardians Surname</label><br>
-        {{ form.checkout_guardians_sur_name }}<br>
+            <label for="id_daystar_care_time_fee_currency">Daystar Care Time Fee Currency</label><br>
+            {{ form.daystar_care_time_fee_currency }}<br>
         
-        <label for="id_checkout_guardians_other_names">Guardians Other Names</label><br>
-        {{ form.checkout_guardians_other_names }}<br>
-
-        <label for="id_checkout_guardians_telephone">Guardians Telephone</label><br>
-        {{ form.checkout_guardians_telephone }}<br>
-
-        <label for="id_checkout_payment_choice">Payment Choice</label><br>
-        {{ form.checkout_payment_choice }}<br>
+            <label for="id_checkout_sitter_fee">Checkout Sitter Fee</label><br>
+            {{ form.checkout_sitter_fee }}<br>
+    
+            <label for="id_checkout_sitter_fee_currency">Checkout Sitter Fee Currency</label><br>
+            {{ form.checkout_sitter_fee_currency }}<br>
+    
+            <label for="id_checkout_comment">Daystar checkout Fee Currency</label><br>
+            {{ form.checkout_comment }}<br>
         
+    
+          </div>
+          
       </div>
-
-    
-    
-
-      <div class="form-column">
-    
-        <label for="id_sitter_id">Sitter ID Number</label><br>
-        {{ form.sitter_id }}<br>
-
-        <label for="id_daystar_care_time_fee">Daystar Care Time Fee</label><br>
-        {{ form.daystar_care_time_fee }}<br>
-    
-        <label for="id_daystar_care_time_fee_currency">Daystar Care Time Fee Currency</label><br>
-        {{ form.daystar_care_time_fee_currency }}<br>
-    
-        <label for="id_checkout_sitter_fee">Checkout Sitter Fee</label><br>
-        {{ form.checkout_sitter_fee }}<br>
-
-        <label for="id_checkout_sitter_fee_currency">Checkout Sitter Fee Currency</label><br>
-        {{ form.checkout_sitter_fee_currency }}<br>
-
-        <label for="id_checkout_comment">Daystar checkout Fee Currency</label><br>
-        {{ form.checkout_comment }}<br>
-    
-
-      </div>
+      <input type="submit" value="Submit" class="btn btn-light mt-3" style="margin-left: 40%; width: 20%;">
+      </form> 
       
-  </div>
-  <input type="submit" value="Submit" class="btn btn-light mt-3" style="margin-left: 40%; width: 20%;">
-  </form> 
-  
+    
+      {% endif %}
+    </div>
 
-  {% endif %}
 </div>
+
+</div>
+
+
+
+
+
   
 {% endblock %} 
 
