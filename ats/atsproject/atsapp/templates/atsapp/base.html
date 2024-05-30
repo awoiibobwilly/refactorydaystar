@@ -15,10 +15,10 @@
 </head>
 <body>
   
-    <div class="container-fluid topnav sticky-top p-0">
+    <!-- <div class="container-fluid topnav sticky-top p-0">
       <nav class="navbar navbar-expand-sm" style="background-color:  rgb(21, 105, 111);;">
         <div class="container-fluid">
-          <a class="navbar-brand p-3" href="/homeat/" style="width: 150px;"><img class ="p-0" src="{% static 'atsapp/images/baby-image_09-01.png' %}" alt="" style="width:50%;"></a>
+          <a class="navbar-brand p-3" href="/home/" style="width: 150px;"><img href="/home/" class ="p-0" src="{% static 'atsapp/images/baby-image_09-01.png' %}" alt="" style="width:50%;"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -34,31 +34,61 @@
               <li class="nav-item"> <a class="class="nav-link"" href="/salesorder/">Sales Orders</a></li>
               <li class="nav-item"> <a class="class="nav-link"" href="/editinfo/">Edit</a> </li>
               <li class="nav-item"> <a class="class="nav-link"" href="/logout/">Logout</a></li>
-              <!-- <div class="search-container">
+              <div class="search-container">
                 {% csrf_token %}
                 <form method="get" action="">
                   <input type="text" placeholder="Search.." name="querry">
                   <button type="submit"><i class="fa fa-search"></i></button>
                 </form>
-              </div> -->
+              </div>
           </div>
         </div>
       </nav>
     </div>
-      
+       -->
      
     <div class="sidebar mvh-100%">
-        <a class="active" href="/homeat/">DAYSATR DAYCARE</a>
+        <a class="active" href="/home/"><img href="/home/" class ="p-0" src="{% static 'atsapp/images/baby-image_09-01.png' %}" alt="" style="width:50%;"></a>
         <!-- <a class="" href=""><img src="{% static 'atsapp/dashboard_icon_two.svg' %}" alt="" style="width:10%;">&nbsp;&nbsp;</a> -->
         <a class="" href= "/dashboard/"><img src="{% static 'atsapp/images/dashboard_icon_two.svg' %}" alt="" style="width:15%;">&nbsp;&nbsp;Dashboard</a>
-        <a class="" href= "/babylist/"><img src="{% static 'atsapp/images/baby_icon_two.svg' %}" alt="" style="width:15%;">&nbsp;&nbsp;Baby Record</a>
-        <a class="" href="{% url 'sitterlist' %}"><img src="{% static 'atsapp/images/sitter_icon_two.svg' %}" alt="" style="width:15%;">&nbsp;&nbsp;Sitter Record</a>
-        <a class="" href="/financereport/"><img src="{% static 'atsapp/images/finance_icon_two.svg' %}" alt="" style="width:15%;">&nbsp;&nbsp;Finance Report</a>
-        <a class="" href="/salesreport/"><img src="{% static 'atsapp/images/sales_icon_two.svg' %}" alt="" style="width:15%;">&nbsp;&nbsp;Sales Report</a>
-        <a class="" href="/inventory/"><img src="{% static 'atsapp/images/inventory_icon_two.svg' %}" alt="" style="width:15%;">&nbsp;&nbsp;Inventory</a>
-        <a class="" href="/bcheckinrecord/"><img src="{% static 'atsapp/images/checkin_icon_two.svg' %}" alt="" style="width:15%;">&nbsp;&nbsp;Checkin Record</a>
-        <a class="" href="/bcheckoutrecord/"><img src="{% static 'atsapp/images/checkout_icon_two.svg' %}" alt="" style="width:17%;">&nbsp;&nbsp;Checkout Record</a>
+        <div class="dropdown">
+          <a class="btn dropdown-toggle" href="/babylist/" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="{% static 'atsapp/images/baby_icon_two.svg' %}" alt="" style="width:15%;">&nbsp;&nbsp;Baby Details</a>
         
+          <ul class="dropdown-menu" style="background-color: rgb(133, 133, 133);">
+            <li class="nav-item"><a class="class="nav-link"" href="/babyregistration/"><img src="{% static 'atsapp/images/baby-registration-one.svg' %}" alt="" style="width:20%;">&nbsp;&nbsp;Registration</a> </li>
+            <li class="nav-item"></li><a class="" href= "/babylist/"><img src="{% static 'atsapp/images/babylist-icon-4.svg' %}" alt="" style="width:20%;">&nbsp;&nbsp;Baby List</a></li>
+            <li class="nav-item"><a class="class="nav-link"" href="/babycheckin/"><img src="{% static 'atsapp/images/baby_checkin_five.svg' %}" alt="" style="width:15%;">&nbsp;&nbsp;Daily Checkin</a></li>
+            <li class="nav-item"><a class="class="nav-link"" href="/babycheckout/"><img src="{% static 'atsapp/images/baby_checkin_seven.svg' %}" alt="" style="width:15%;">&nbsp;&nbsp;Daily Checkout</a> </li>
+            <li class="nav-item"></li><a class="" href="/bcheckinrecord/"><img src="{% static 'atsapp/images/checkin_icon_two.svg' %}" alt="" style="width:15%;">&nbsp;&nbsp;Checkin Record</a></li>
+            <li class="nav-item"></li><a class="" href="/bcheckoutrecord/"><img src="{% static 'atsapp/images/checkout_icon_two.svg' %}" alt="" style="width:18%;">&nbsp;&nbsp;Checkout Record</a></li>
+          </ul>
+        </div>
+
+
+        <div class="dropdown">
+          <a class="btn dropdown-toggle" href="/sitterlist/" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="{% static 'atsapp/images/sitter_icon_two.svg' %}" alt="" style="width:15%;">&nbsp;&nbsp;Sitter Details</a>
+          <ul class="dropdown-menu" style="background-color: rgb(133, 133, 133);">
+            <li class="nav-item"><a class="class="nav-link"" href="/sitterregistration/"><img src="{% static 'atsapp/images/sitter-registration-one.svg' %}" alt="" style="width:20%;">&nbsp;&nbsp;Registration</a> </li>
+            <li class="nav-item"><a class="class="nav-link"" href="/sitterstatus/"><img src="{% static 'atsapp/images/check-in-check-out-icon-new-one.svg' %}" alt="" style="width:15%;">&nbsp;&nbsp;Checkin/Checkout</a></li>
+            <a class="" href="/sitterlist/"><img src="{% static 'atsapp/images/sitter_list_two.svg' %}" alt="" style="width:15%;">&nbsp;&nbsp;Sitter List</a>
+            
+          </ul>
+        </div>
+        <div class="dropdown">
+          <a class="btn dropdown-toggle" href="/babylist/" role="button" data-bs-toggle="dropdown" aria-expanded="false"><img src="{% static 'atsapp/images/sales_icon_twos.svg' %}" alt="" style="width:25%;">&nbsp;&nbsp;Sales Details</a>
+        
+          <ul class="dropdown-menu" style="background-color: rgb(133, 133, 133);">
+            <li class="nav-item" id="drop"><a class="class="nav-link"" href="/purchaseorder/"><img src="{% static 'atsapp/images/purchase_orders_icon_one.svg' %}" alt="" style="width:15%;">&nbsp;&nbsp;Purcahse Orders</a></li>
+            <li class="nav-item"></li><a class="" href="/inventory/"><img src="{% static 'atsapp/images/inventory_icon_two.svg' %}" alt="" style="width:20%;">&nbsp;&nbsp;Inventory</a></li>
+            <li class="nav-item"> <a class="class="nav-link"" href="/salesorder/"><img src="{% static 'atsapp/images/sales_orders_icon_one.svg' %}" alt="" style="width:15%;">&nbsp;&nbsp;Sales Orders</a></li>
+            <li class="nav-item"></li><a class="" href="/financereport/"><img src="{% static 'atsapp/images/finance_icon_two.svg' %}" alt="" style="width:15%;">&nbsp;&nbsp;Finance Report</a></li>
+            <li class="nav-item"></li><a class="" href="/salesreport/"><img src="{% static 'atsapp/images/sales_icon_two.svg' %}" alt="" style="width:15%;">&nbsp;&nbsp;Sales Report</a></li>
+            
+          </ul>
+        </div>
+        
+        <li class="nav-item"> <a class="class="nav-link"" href="/editinfo/"><img src="{% static 'atsapp/images/edit_info_one.svg' %}" alt="" style="width:15%;">&nbsp;&nbsp;Edit</a> </li>
+        <li class="nav-item"> <a class="class="nav-link"" href="/logout/"><img src="{% static 'atsapp/images/logout_icon.svg' %}" alt="" style="width:15%;">&nbsp;&nbsp;Logout</a></li>
       </div>
       
 

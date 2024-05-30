@@ -9,6 +9,8 @@ from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 from functools import partial
+import calendar
+from calendar import HTMLCalendar
 
 
 # def searchbabies(request):
@@ -32,7 +34,7 @@ from functools import partial
 #             query = form.cleaned_data['query']
 #             results = Baby.objects.filter(Q(babiz_sur_name__icontains=query) | Q(babiz_other_names__icontains=query))
 #     return render(request, 'search.html', {'form':form, 'results':results})
-@login_required
+
 def email_user(email):
     print(f"Dear {email}, An invoice has been raised in your name. Please, if you have not placed any order, reachout to us for more information")
 
@@ -252,6 +254,11 @@ def enterpurchase(request):
     return render(request, 'atsapp/purchaseorder.html', {'form':form, 'submitted':submitted})
 
 @login_required
+def inventorylist(request):
+    purchaselists = Purchase.objects.all()
+    return render(request, 'atsapp/inventory.html', {'purchaselists': purchaselists})
+
+@login_required
 def entersale(request):
     submitted = False
     if request.method == 'POST':
@@ -270,22 +277,37 @@ def entersale(request):
     form = SalesForm()
     return render(request, 'atsapp/salesorder.html', {'form':form, 'submitted':submitted})
 
-    
-
-
 @login_required
-def logout_user(request):
-    logout(request)
-    return redirect('indexats')
-
-
+def productsaleslist(request):
+    saleslists = Sales.objects.all()
+    return render(request, 'atsapp/salesreport.html', {'saleslists': saleslists})
 
 
 def index(request):
     return render(request, 'atsapp/index.html')
-@login_required
-def home(request):
-    return render(request, 'atsapp/home.html')
+# @login_required
+def home(request, year=datetime.now().year, month=datetime.now().strftime('%B')):
+    month = month.capitalize()
+    # day = day.capitalize()
+    # Convert month from name to number
+    month_number = list(calendar.month_name).index(month)
+    # day_number = list(calendar.day_name).index(day)
+    month_number = int(month_number)
+    # day_number = int(day_number)
+    
+    # Craete a Calendar
+    cal = HTMLCalendar().formatmonth(year, month_number)
+    #Get the current Year
+    now = datetime.now()
+    current_year = now.year
+
+    #Get the current time
+    # time = now.strftime('%I:%M:%S %p')
+    time = now.strftime('%I:%M %p')
+    return render(request, 'atsapp/home.html', {'year':year, 'month':month, 'month_number':month_number, 'cal':cal, 'current_year':current_year, 'time':time})
+
+
+
 @login_required
 def babycheckin(request):
     return render(request, 'atsapp/babycheckin.html')
@@ -334,6 +356,13 @@ def sitterregistration(request):
 @login_required
 def dashboard(request):
     return render(request, 'atsapp/dashboard.html')
+
+
+
+@login_required
+def logout_user(request):
+    logout(request)
+    return redirect('indexats')
 
     
 

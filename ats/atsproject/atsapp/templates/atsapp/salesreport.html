@@ -6,7 +6,46 @@
 
 {% block content %}
 
+<div class="container mt-4" style = "font-size: 12px; border-radius: 40px">
+  <h4  class="infoheading">Product Sales List</h4>
+  <div class="border p-3 overflow-scroll" style = "border-radius: 15px;">
 
+    <table class="table table table-hover table-light">
+      <thead>
+        <tr>
+          <th scope="col">Item ID</th>
+          <th scope="col">Customer</th>
+          <th scope="col">Item Number</th>
+          <th scope="col">Sales Date</th>
+          <th scope="col">Unit Price</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Total</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for sales in saleslists %}
+        <tr>
+          <td>{{ sales.id }}</td>
+          <td>{{ sales.so_baby_id }}</td>
+          <td>{{ sales.so_item_number }}</td>
+          <td>{{ sales.so_date_created }}</td>
+          <td>{{ sales.so_unit_price }}</td>
+          <td>{{ sales.so_quantity }}</td>
+          <td>{{ sales.total }}</td>
+          <td><a class = "btn btn-sm btn-success" href="" style = "font-size: 10px;">Edit</a></td>
+          <td><a class = "btn btn-sm btn-danger" href= "" style = "font-size: 10px;">Delete</a></td>
+          
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table> 
+</div>
+
+</div>
+
+   
 
 
 

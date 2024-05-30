@@ -261,7 +261,7 @@ class ProductsStockException(Exception):
 class SalesForm(ModelForm):
     class Meta:
         model = Sales
-        fields = ('so_baby_id','so_date_created','so_item_number','so_unit_price','so_quantity')
+        fields = ('so_baby_id','so_date_created','so_item_number', 'so_unit_price','so_quantity')
         labels = {
             'so_baby_id':'Baby ID Number',
             'so_date_created':'Date Created',

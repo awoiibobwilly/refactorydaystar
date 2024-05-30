@@ -8,7 +8,18 @@
 
 
 
+<!-- <img src="{% static 'atsapp/images/cild_images.jpg' %}" alt="Snow" style="width:100%;"> -->
+<center>
+
+<div class="container text-black mt-5 p-4 fs-5 lh-lg" style="background-color: rgb(238, 242, 240); width: 25%; border-radius: 20px; margin-right: 5%;">
+    {{ current_year }}
+    {{ time }}
+    
+    
+    {{ cal|safe }}
+
+</div>
 
 
-
+</center>
 {% endblock %}

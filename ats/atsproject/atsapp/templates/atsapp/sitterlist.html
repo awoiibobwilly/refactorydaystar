@@ -10,7 +10,7 @@
   <h4  class="infoheading">List of Registered Baby Sitters</h4>
   <div class="border p-3 overflow-scroll" style = "border-radius: 15px;"">
 
-    <table class="table table table-hover table-info">
+    <table class="table table table-hover table-light">
       <thead>
         <tr>
           <th scope="col">Sitter ID No</th>
@@ -35,7 +35,7 @@
         {% for sitter in sitterlists %}
             
         <tr>
-          <td>{{ sitter.id }}</td>
+          <td>BS-0{{ sitter.id }}</td>
           <td>{{ sitter.sit_sur_name }}</td>
           <td>{{ sitter.sit_other_names }}</td>
           <td>{{ sitter.sit_gender }}</td>
