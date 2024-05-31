@@ -7,9 +7,27 @@
 {% block content %}
 
 
+<div class="container mt-3 welkam">
+    <h4 class="h4heading"> {{ user.username.upper|slice:":3" }} Welcome to Daystar Daycare</h4>
+    <center calss "pt-3" style="padding: 3px; background-color: rgb(238, 242, 240); width: 70%; border-radius: 60px; margin-left: 15%;">
+        
+        <p class="text-black">
+            You are aware that here at Daystar Daycare, we operate as a family-run daycare center located in the heart of the city. <br>
+            We are committed to providing a safe, fun, and caring environment for all children under our care. <br>
+            Our goal is to provide a welcoming, supportive and nuturing environment for our children.
+        </p>
+        <p class="text-black">
+            Our first responsibility is to the children entrusted to us, <br>
+            we also have a responsibility to the parents/guradians who have believed in us to not just to take care of the children, <br>
+            but also to create an environment where early childhood learning will be enhanced, but also made faster and easier, <br>
+            we also have a responsibility to the community that we opearate in, <br>
+            and finally we are committed to our government that have given us the enabling environment to do what we do. </p>
+    </center>
+   
+</div>
 
 <!-- <img src="{% static 'atsapp/images/cild_images.jpg' %}" alt="Snow" style="width:100%;"> -->
-<center>
+
 
 <div class="container text-black mt-5 p-4 fs-5 lh-lg" style="background-color: rgb(238, 242, 240); width: 25%; border-radius: 20px; margin-right: 5%;">
     {{ current_year }}
@@ -21,5 +39,5 @@
 </div>
 
 
-</center>
+
 {% endblock %}
