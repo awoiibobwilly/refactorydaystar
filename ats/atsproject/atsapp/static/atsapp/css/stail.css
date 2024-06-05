@@ -52,7 +52,7 @@ color: rgb(238, 242, 240);
 div.content {
 margin-left: 200px;
 padding: 1px 16px;
-height: 1800px;
+height: auto;
 }
 
 /* On screens that are less than 700px wide, make the sidebar into a topbar */

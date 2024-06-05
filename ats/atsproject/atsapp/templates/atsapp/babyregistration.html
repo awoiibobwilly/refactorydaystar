@@ -7,52 +7,60 @@
 
   <h4 class="h4heading">Register Baby Here</h4>
   {% if submitted %}
+<center>
 
-    Baby Registration Was Successful!
+  Baby Registration Was Successful! 
+  <br><br><br>
+  <button onclick="location.href= /babyregistration/" class="btn btn-secondary">Back To Form</button>
+  <br><br><br>
+  <button onclick="location.href= /home/" class="btn btn-secondary">Home</button>
+  <br><br><br>
+  <button onclick="location.href= /babylist/" class="btn btn-secondary">Baby Registration List</button>
 
+</center>
+ 
   {% else %}
 
     <form class="" action="" method="POST">
       {% csrf_token %}
-
-     
-      
       
       <div class="form-container p-3" style="width: 70%; margin-left: 15%; border-radius: 20px; background-color: rgb(238,242,255);">
         <div class="form-column">
-          <label for="id_babiz_sur_name">Baby Surname</label><br>
+          <h5>(a) BABY'S DETAILS</h5> <br>
+          <label for="id_babiz_sur_name">1- Surname</label><br>
           {{ form.babiz_sur_name }}<br>
           
-          <label for="id_babiz_other_names">Baby Other Names</label><br>
+          <label for="id_babiz_other_names">2- Other Names</label><br>
           {{ form.babiz_other_names }}<br>
  
-          <label for="id_babiz_gender">Baby Gender</label><br>
+          <label for="id_babiz_gender">3- Gender</label><br>
           {{ form.babiz_gender }}<br>
           
-          <label for="id_babiz_date_of_birth">Baby Date of Birth</label><br>
-          {{ form.babiz_date_of_birth }}<br>
-          
-          <label for="id_parentz_sur_name">Parent Surname</label><br>
+          <label for="id_babiz_date_of_birth">4- Date of Birth</label><br>
+          {{ form.babiz_date_of_birth }}<br> <br>
+          <h5>(b) PARENT'S DETAILS</h5> <br>
+          <label for="id_parentz_sur_name">5- Surname</label><br>
           {{ form.parentz_sur_name }}<br>
           
-          <label for="id_parentz_other_names">Parent Other Names</label><br>
-          {{ form.parentz_other_names }}<br>
+         
         </div>
 
-        <div class="form-column">
-          <label for="id_babiz_sur_name">Parent Gender</label><br>
+        <div class="form-column"><br><br>
+          <label for="id_parentz_other_names">6- Other Names</label><br>
+          {{ form.parentz_other_names }}<br>
+          <label for="id_babiz_sur_name">7- Gender</label><br>
           {{ form.parentz_gender }}<br>
       
-          <label for="id_babiz_other_names">Parent Date of Birth</label><br>
+          <label for="id_babiz_other_names">8- Date of Birth</label><br>
           {{ form.parentz_date_of_birth }}<br>
       
-          <label for="id_babiz_gender">Parent Date of Birth</label><br>
+          <label for="id_babiz_gender">9- Telephone</label><br>
           {{ form.parentz_telephone }}<br>
       
-          <label for="id_babiz_date_of_birth">Parent Telephone</label><br>
+          <label for="id_babiz_date_of_birth">10- Location/Address</label><br>
           {{ form.parentz_address }}<br>
       
-          <label for="id_parentz_sur_name">Parent Location</label><br>
+          <label for="id_parentz_sur_name">11- Email Address</label><br>
           {{ form.parentz_email }}<br>
   
         </div>

@@ -192,6 +192,33 @@ def baby_checkin(request):
     return render(request, 'atsapp/babycheckin.html', {'form':form, 'submitted':submitted})
 
 @login_required
+def bcheckin_list(request):
+    checkinlist = Checkin.objects.all()
+    return render(request, 'atsapp/bcheckinrecord.html', {'checkinlist': checkinlist})
+    
+@login_required
+def delete_checkin(request, checkin_id):
+    Checkin.objects.filter(id=checkin_id).delete()
+    return redirect('bcheckinrecord')
+
+@login_required
+def edit_checkin(request, checkin_id):
+    checkin = get_object_or_404(Checkin, pk=checkin_id)
+    if request.method == 'POST':
+        form = CheckinForm(request.POST, instance=checkin)
+        if form.is_valid():
+            form.save()
+            return redirect('bcheckinrecord')
+    else:
+        form = CheckinForm(instance=checkin)
+    return render(request, 'atsapp/editinfo.html', {'form':form})
+
+@login_required
+def bcheckout_list(request):
+    checkoutlist = Checkout.objects.all()
+    return render(request, 'atsapp/bcheckoutrecord.html', {'checkoutlist': checkoutlist})
+
+@login_required
 def baby_checkout(request):
     submitted = False
     if request.method == 'POST':
@@ -204,6 +231,45 @@ def baby_checkout(request):
         if 'submitted' in request.GET:
             submitted = True
     return render(request, 'atsapp/babycheckout.html', {'form':form, 'submitted':submitted})
+
+@login_required
+def delete_checkout(request, checkout_id):
+    Checkout.objects.filter(id=checkout_id).delete()
+    return redirect('bcheckoutrecord')
+
+@login_required
+def edit_checkout(request, checkout_id):
+    checkout = get_object_or_404(Checkout, pk=checkout_id)
+    if request.method == 'POST':
+        form = CheckoutForm(request.POST, instance=checkout)
+        if form.is_valid():
+            form.save()
+            return redirect('bcheckoutrecord')
+    else:
+        form = CheckoutForm(instance=checkout)
+    return render(request, 'atsapp/editinfo.html', {'form':form})
+
+@login_required
+def sitterrecords(request):
+    sitterlists = Sitter_Register.objects.all()
+    return render(request, 'atsapp/sitterlist.html', {'sitterlists': sitterlists})
+    
+@login_required
+def deletesitters(request, sitter_id):
+    Sitter_Register.objects.filter(id=sitter_id).delete()
+    return redirect('sitterlist')
+
+@login_required
+def editsitters(request, sitter_id):
+    sitter = get_object_or_404(Sitter_Register, pk=sitter_id)
+    if request.method == 'POST':
+        form = Sitter_RegisterForm(request.POST, instance=sitter)
+        if form.is_valid():
+            form.save()
+            return redirect('sitterlist')
+    else:
+        form = Sitter_RegisterForm(instance=sitter)
+    return render(request, 'atsapp/editinfo.html', {'form':form})
 
 # @login_required
 # def procure_item(request):
@@ -243,20 +309,48 @@ def baby_checkout(request):
 def enterpurchase(request):
     submitted = False
     if request.method == 'POST':
-        form = PurchaseForm(request.POST)
-        if form.is_valid():
-            form.save()
+        formp = PurchaseForm(request.POST)
+        if formp.is_valid():
+            formp.save()
             return HttpResponseRedirect('/purchaseorder?submitted=True')
     else:
-        form = PurchaseForm()
+        formp = PurchaseForm()
         if 'submitted' in request.GET:
             submitted = True
-    return render(request, 'atsapp/purchaseorder.html', {'form':form, 'submitted':submitted})
+    return render(request, 'atsapp/purchaseorder.html', {'formp':formp, 'submitted':submitted})
 
 @login_required
 def inventorylist(request):
     purchaselists = Purchase.objects.all()
     return render(request, 'atsapp/inventory.html', {'purchaselists': purchaselists})
+
+@login_required
+def edit_inventory(request, inventory_id):
+    inventory = get_object_or_404(Purchase, pk=inventory_id)
+    if request.method == 'POST':
+        form = PurchaseForm(request.POST, instance=inventory)
+        if form.is_valid():
+            form.save()
+            return redirect('inventory')
+    else:
+        form = PurchaseForm(instance=inventory)
+    return render(request, 'atsapp/editinfo.html', {'form':form})
+
+
+# @login_required
+# def edit_inventory(request, inventory_id):
+#     Purchase.objects.get(id=inventory_id)
+#     if request.method == 'POST':
+#         form = PurchaseForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#     return redirect('inventory')
+
+@login_required
+def delete_inventory(request, inventory_id):
+    Purchase.objects.filter(id=inventory_id).delete()
+    return redirect('inventory')
+
 
 @login_required
 def entersale(request):

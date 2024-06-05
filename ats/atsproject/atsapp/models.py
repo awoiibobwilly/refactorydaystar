@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
+from django.core import validators
+
 
 class Baby_Register(models.Model):
     babiz_sur_name = models.CharField(max_length=20)
@@ -49,11 +51,10 @@ class Sitter_Status(models.Model):
     sitter_time = models.TimeField()
     sitter_date = models.DateField()
     def __int__(self):
-        return self.sitter_id
+        return f"{self.sitter_id} - {self.sitter_availability}"
 
 class Checkin(models.Model): 
     baby_id = models.ForeignKey(Baby_Register, on_delete=models.CASCADE)
-    checkin_sitter_availability = models.ForeignKey(Sitter_Status, on_delete=models.CASCADE, max_length=10, default='On Duty')
     checkin_time = models.TimeField()
     checkin_date = models.DateField()
     checkin_care_time = models.CharField(max_length=10, choices=[('Morning', 'Morning'), ('Afternoon', 'Afternoon'), ('Evening', 'Evening'), ('Night', 'Night')])
@@ -83,7 +84,7 @@ class Checkout(models.Model):
     daystar_care_time_fee = models.IntegerField()
     daystar_care_time_fee_currency = models.CharField(max_length= 10, choices=[('UGX', 'UGX'), ('USD', 'USD')], default= 'UGX')
     checkout_sitter_fee = models.IntegerField()
-    checkout_sitter_fee_currency = models.CharField(max_length= 10, default= 'UGX')
+    checkout_sitter_fee_currency = models.CharField(max_length= 10, choices=[('UGX', 'UGX'), ('USD', 'USD')], default= 'UGX')
     checkout_comment = models.CharField(max_length=1000)
 
     def __int__(self):

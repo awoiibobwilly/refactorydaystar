@@ -6,82 +6,64 @@
 
 {% block content %}
 
-<div>
+<div class="container mt-4" style = "font-size: 12px; border-radius: 40px">
+  <h4  class="infoheading">Baby Checkin Details</h4>
+  <div class="border p-3 overflow-scroll" style = "border-radius: 15px;">
 
-    <h4 class="infoheading">Baby Checkout Record</h4>
-<div class="p-4">
-   
-    <table class="table table-success table-striped table-responsive">
+    <table class="table table table-hover table-light">
         <thead>
           <tr>
-            <th scope="col">Baby ID No</th>
-            <th scope="col">Baby Sur Name</th>
-            <th scope="col">Baby Other Names</th>
-            <th scope="col">Check Out Date</th>
-            <th scope="col">Check Out Time</th>
-            <th scope="col">Period of Stay</th>
-            <th scope="col">Picker's Sur Name</th>
-            <th scope="col">Picker's Other Names</th>
-            <th scope="col">Picker's Contact</th>
-            <th scope="col">Sitter's Sur Name</th>
-            <th scope="col">Sitter's Other Names</th>
-            <th scope="col">Fee Paid by Baby</th>
-            <th scope="col">Allowance Paid to Sitter</th>
+            <th scope="col">Checkin ID No</th>
+            <th scope="col">Baby Surname</th>
+            <th scope="col">Checkin Time</th>
+            <th scope="col">Checkin Date</th>
+            <th scope="col">Care Time</th>
+            <th scope="col">Gurdian's Surname</th>
+            <th scope="col">Guardian's Other Names</th>
+            <th scope="col">Guardian's Phone</th>
+            <th scope="col">Sitter Surname</th>
+            <th scope="col">Payment Choice</th>
+            <th scope="col">Checkin Fee</th>
+            <th scope="col">Fee Currency</th>
+            <th scope="col">Sitter Fee</th>
+            <th scope="col">Fee Currency</th>
             <th scope="col">Comment</th>
+            <th scope="col">Update</th>
+            <th scope="col">Remove</th>
+
           </tr>
+        </thead>
+
+               
+        <tbody>
+          {% for checkout in checkoutlist %}
           <tr>
-            <th scope="row">DDB-0001</th>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-            <td>7</td>
-            <td>8</td>
-            <td>9</td>
-            <td>10</td>
-            <td>11</td>
-            <td>12</td>
-            <td>13</td>
+            <td>CO-0{{ checkout.id }}</td>
+            <td>{{ checkout.baby_id }}</td>
+            <td>{{ checkout.checkout_time }}</td>
+            <td>{{ checkout.checkout_date }}</td>
+            <td>{{ checkout.checkout_care_time }}</td>
+            <td>{{ checkout.checkout_guardians_sur_name }}</td>
+            <td>{{ checkout.checkout_guardians_other_names }}</td>
+            <td>{{ checkout.checkout_guardians_telephone }}</td>
+            <td>{{ checkout.sitter_id }}</td>
+            <td>{{ checkout.checkout_payment_choice }}</td>
+            <td>{{ checkout.daystar_care_time_fee }}</td>
+            <td>{{ checkout.daystar_care_time_fee_currency }}</td>
+            <td>{{ checkout.checkout_sitter_fee }}</td>
+            <td>{{ checkout.checkout_sitter_fee_currency }}</td>
+            <td>{{ checkout.checkout_comment }}</td>
+            <td><a class = "btn btn-sm btn-success" href="{% url 'edit_checkout' checkout.id %}" style = "font-size: 10px;">Edit</a></td>
+            <td><a class = "btn btn-sm btn-danger" href= "{% url 'delete_checkout' checkout.id %}" style = "font-size: 10px;">Delete</a></td>
+            
           </tr>
-          <tr>
-            <th scope="row">DDB-0002</th>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-            <td>7</td>
-            <td>8</td>
-            <td>9</td>
-            <td>10</td>
-            <td>11</td>
-            <td>12</td>
-            <td>13</td>
-          </tr>
-          <tr>
-            <th scope="row">DDB-0003</th>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-            <td>7</td>
-            <td>8</td>
-            <td>9</td>
-            <td>10</td>
-            <td>11</td>
-            <td>12</td>
-            <td>13</td>
-          </tr>
+          {% endfor %}
         </tbody>
       </table> 
-</div>
-</div>
-
+  </div>
+  
+  </div>
+  
 
 
 

@@ -36,8 +36,8 @@
           <td>{{ purchase.po_entry_date }}</td>
           <td>{{ purchase.po_quantity }}</td>
           <td>{{ purchase.total }}</td>
-          <td><a class = "btn btn-sm btn-success" href="" style = "font-size: 10px;">Edit</a></td>
-          <td><a class = "btn btn-sm btn-danger" href= "" style = "font-size: 10px;">Delete</a></td>
+          <td><a class = "btn btn-sm btn-success" href="{% url 'edit_inventory' purchase.id %}" style = "font-size: 10px;">Edit</a></td>
+          <td><a class = "btn btn-sm btn-danger" href= "{% url 'delete_inventory' purchase.id %}" style = "font-size: 10px;">Delete</a></td>
           
         </tr>
         {% endfor %}

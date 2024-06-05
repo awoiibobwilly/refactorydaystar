@@ -6,87 +6,60 @@
 
 {% block content %}
 
-<div>
+<div class="container mt-4" style = "font-size: 12px; border-radius: 40px">
+  <h4  class="infoheading">Baby Checkin Details</h4>
+  <div class="border p-3 overflow-scroll" style = "border-radius: 15px;">
 
-    <h4 class="infoheading">Baby Checkin Record</h4>
-<div class="p-5">
-
-   
-    <table class="table">
+    <table class="table table table-hover table-light">
         <thead>
           <tr>
-            <th scope="col">Baby ID No</th>
-            <th scope="col">Baby Sur Name</th>
-            <th scope="col">Baby Other Names</th>
-            <th scope="col">Check In Date</th>
-            <th scope="col">Check In Time</th>
-            <th scope="col">Period of Stay</th>
-            <th scope="col">Droper's Sur Name</th>
-            <th scope="col">Droper's Other Names</th>
-            <th scope="col">Droper's Contact</th>
-            <th scope="col">Sitter's Sur Name</th>
-            <th scope="col">Sitter's Other Names</th>
-            <th scope="col">Fee Paid by Baby</th>
-            <th scope="col">Allowance Due to Sitter</th>
+            <th scope="col">Checkin ID No</th>
+            <th scope="col">Baby Surname</th>
+            <th scope="col">Checkin Time</th>
+            <th scope="col">Checkin Date</th>
+            <th scope="col">Care Time</th>
+            <th scope="col">Gurdian's Surname</th>
+            <th scope="col">Guardian's Other Names</th>
+            <th scope="col">Guardian's Phone</th>
+            <th scope="col">Sitter Surname</th>
+            <th scope="col">Payment Choice</th>
+            <th scope="col">Checkin Fee</th>
+            <th scope="col">Fee Currency</th>
             <th scope="col">Comment</th>
+            <th scope="col">Update</th>
+            <th scope="col">Remove</th>
 
           </tr>
         </thead>
+
+               
         <tbody>
+          {% for checkin in checkinlist %}
           <tr>
-            <th scope="row">DDB-0001</th>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-            <td>7</td>
-            <td>8</td>
-            <td>9</td>
-            <td>10</td>
-            <td>11</td>
-            <td>12</td>
-            <td>13</td>
+            <td>CI-0{{ checkin.id }}</td>
+            <td>{{ checkin.baby_id }}</td>
+            <td>{{ checkin.checkin_time }}</td>
+            <td>{{ checkin.checkin_date }}</td>
+            <td>{{ checkin.checkin_care_time }}</td>
+            <td>{{ checkin.checkin_guardians_sur_name }}</td>
+            <td>{{ checkin.checkin_guardians_other_names }}</td>
+            <td>{{ checkin.checkin_guardians_telephone }}</td>
+            <td>{{ checkin.sitter_id }}</td>
+            <td>{{ checkin.checkin_payment_choice }}</td>
+            <td>{{ checkin.daystar_checkin_fee }}</td>
+            <td>{{ checkin.daystar_checkin_fee_currency }}</td>
+            <td>{{ checkin.checkin_comment }}</td>
+            <td><a class = "btn btn-sm btn-success" href="{% url 'edit_checkin' checkin.id %}" style = "font-size: 10px;">Edit</a></td>
+            <td><a class = "btn btn-sm btn-danger" href= "{% url 'delete_checkin' checkin.id %}" style = "font-size: 10px;">Delete</a></td>
+            
           </tr>
-          <tr>
-            <th scope="row">DDB-0002</th>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-            <td>7</td>
-            <td>8</td>
-            <td>9</td>
-            <td>10</td>
-            <td>11</td>
-            <td>12</td>
-            <td>13</td>
-          </tr>
-          <tr>
-            <th scope="row">DDB-0003</th>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-            <td>7</td>
-            <td>8</td>
-            <td>9</td>
-            <td>10</td>
-            <td>11</td>
-            <td>12</td>
-            <td>13</td>
-          </tr>
+          {% endfor %}
         </tbody>
       </table> 
-</div>
-
-
-</div>
+  </div>
+  
+  </div>
+  
 
 
 

@@ -3,9 +3,9 @@ from django import forms
 from django.forms import ModelForm
 from .models import *
 
-            
 
 class Baby_RegisterForm(ModelForm):
+
     class Meta:
         model = Baby_Register
         fields = ('babiz_sur_name',  'babiz_other_names', 'babiz_gender', 'babiz_date_of_birth', 'parentz_sur_name', 'parentz_other_names', 'parentz_gender', 'parentz_date_of_birth',  'parentz_telephone', 'parentz_address', 'parentz_email')
@@ -21,8 +21,22 @@ class Baby_RegisterForm(ModelForm):
             'parentz_telephone':'Parent Telephone',
             'parentz_address':'Parent Location',
             'parentz_email':'Parent Email'}
+
+
+        babiz_sur_name = forms.CharField(required=False)
+        babiz_other_names = forms.CharField(required=False)
+        babiz_gender = forms.CharField(required=False)
+        babiz_date_of_birth = forms.DateField(required=False)
+        parentz_sur_name = forms.CharField(required=False)
+        parentz_other_names = forms.CharField(required=False)
+        parentz_gender = forms.CharField(required=False)
+        parentz_date_of_birth = forms.DateField(required=False)
+        parentz_telephone = forms.CharField(required=False)
+        parentz_address = forms.CharField(required=False)
+        parentz_email = forms.EmailField(required=False)
+
         widgets = {
-            'babiz_sur_name': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Vudriko'}),
+            'babiz_sur_name': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Vudriko'}), 
             'babiz_other_names': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Trisher'}),
             'babiz_gender': forms.Select(attrs={'class': 'form-control', 'placeholder':'Female'}),
             'babiz_date_of_birth': forms.DateInput(attrs={'class':'form-control', 'placeholder':'mm/dd/yyyy'}),
@@ -33,10 +47,29 @@ class Baby_RegisterForm(ModelForm):
             'parentz_telephone': forms.TextInput(attrs={'class':'form-control', 'placeholder':'+256 772 772 772'}),
             'parentz_address': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Kabalagala'}),
             'parentz_email': forms.EmailInput(attrs={'class':'form-control', 'placeholder':'mukaroberts@gmail.com'})}
-        
+
+
         def __str__(self):
             return self.babiz_sur_name
-       
+
+        def clean(self):
+            cleaned_data = super(Baby_RegisterForm, self).clean()
+            babiz_sur_name = cleaned_data.get('babiz_sur_name')
+            babiz_other_names = cleaned_data.get('babiz_other_names')
+            parentz_sur_name = cleaned_data.get('parentz_sur_name')
+            parentz_other_names = cleaned_data.get('parentz_other_names')
+            parentz_date_of_birth = cleaned_data.get('parentz_date_of_birth')
+            parentz_telephone = cleaned_data.get('parentz_telephone')
+            parentz_address = cleaned_data.get('parentz_address')
+            parentz_email = cleaned_data.get('parentz_email')
+
+            if not babiz_sur_name:
+                raise forms.ValidationError('Baby Surname is required')
+            elif len(babiz_sur_name) < 3:
+                raise forms.ValidationError('Baby Surname is too short')
+            return cleaned_data
+        
+        
 
 class Sitter_RegisterForm(ModelForm):
     class Meta:
@@ -93,7 +126,7 @@ class Sitter_StatusForm(ModelForm):
            'sitter_date':'Sitter Date'}
         widgets = {
            'sitter_id': forms.TextInput(attrs={'class':'form-control', 'placeholder':'BDD0001'}),
-           'sitter_availability': forms.Select(attrs={'class': 'form-control', 'placeholder':'On Duty'}),
+           'sitter_availability': forms.Select(attrs={'class': 'form-control'}),
            'sitter_time': forms.TextInput(attrs={'class':'form-control', 'placeholder':'10:00'}),
            'sitter_date': forms.DateInput(attrs={'class':'form-control','placeholder':'09/05/2024'})}
         
@@ -102,12 +135,17 @@ class Sitter_StatusForm(ModelForm):
 
 
 class CheckinForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(CheckinForm, self).__init__(*args, **kwargs)
+        # Filter the sitter_id choices to only include sitters who are on duty
+        on_duty_sitter_ids = Sitter_Status.objects.filter(sitter_availability='On Duty').values_list('sitter_id', flat=True)
+        self.fields['sitter_id'].queryset = self.fields['sitter_id'].queryset.filter(id__in=on_duty_sitter_ids)
+
     class Meta:
         model = Checkin
-        fields = ('baby_id', 'checkin_sitter_availability', 'checkin_time', 'checkin_date', 'checkin_care_time', 'checkin_guardians_sur_name', 'checkin_guardians_other_names', 'checkin_guardians_telephone', 'sitter_id', 'checkin_payment_choice','daystar_checkin_fee', 'daystar_checkin_fee_currency', 'checkin_comment')
+        fields = ('baby_id', 'checkin_time', 'checkin_date', 'checkin_care_time', 'checkin_guardians_sur_name', 'checkin_guardians_other_names', 'checkin_guardians_telephone', 'sitter_id', 'checkin_payment_choice','daystar_checkin_fee', 'daystar_checkin_fee_currency', 'checkin_comment')
         labels = {
             'baby_id':'Baby ID Number',
-            'checkin_sitter_availability':'Sitter Availability',
             'checkin_time':'Checkin Time',
             'checkin_date':'Checkin Date',
             'checkin_care_time':'Care Time',
@@ -121,7 +159,6 @@ class CheckinForm(ModelForm):
             'checkin_comment':'Checkin Comment'}
         widgets = {
             'baby_id': forms.TextInput(attrs={'class':'form-control','placeholder':'BDD0001'}),
-            'checkin_sitter_availability': forms.Select(attrs={'class':'form-control', 'placeholder':'On Duty'}),
             'checkin_time': forms.TimeInput(attrs={'class':'form-control','placeholder':'7:30 AM'}),
             'checkin_date': forms.DateInput(attrs={'class':'form-control','placeholder':'09/05/2024'}),
             'checkin_care_time': forms.Select(attrs={'class':'form-control','placeholder':'Morning'}),
