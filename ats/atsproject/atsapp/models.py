@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
 from django.core import validators
+from django.db.models import Sum
 
 
 class Baby_Register(models.Model):
@@ -113,7 +114,9 @@ class Checkout(models.Model):
 
 #     def __str__(self):
 #         return f'{self.so_quantity} x {self.so_item_number.po_item_number}'
-
+# def doll_total_quantity():
+#     total_quantity_of_dolls = Purchase.objects.aggregate(total_quantity_of_dolls=Sum('po_quantity'))['total_quantity_of_dolls']
+#     return total_quantity_of_dolls if total_quantity_of_dolls else 0
 
 class Purchase(models.Model):
     po_item_number = models.CharField(max_length=20)
@@ -122,12 +125,18 @@ class Purchase(models.Model):
     po_purchase_date = models.DateTimeField()
     po_entry_date = models.DateTimeField()
     po_quantity = models.PositiveSmallIntegerField()
+
     @property
     def total(self):
         return self.po_unit_cost*self.po_quantity
 
     def __str__(self):
         return self.po_item_number
+
+    @classmethod
+    def purchase_total_quantity(cls):
+        return cls.objects.aggregate(purchase_total_quantity=Sum('po_quantity'))['purchase_total_quantity']
+    
 
 class Sales(models.Model):
     so_baby_id = models.ForeignKey(Baby_Register, on_delete=models.CASCADE)

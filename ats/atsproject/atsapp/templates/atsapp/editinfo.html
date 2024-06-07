@@ -255,5 +255,52 @@
   <input type="submit" value="Submit" class="btn btn-secondary mt-3 mb-5" style="margin-left: 40%; width: 25%; border-radius: 20px; background-color:rgb(21, 105, 111)">
 </form>
 
+<br><br>
+<div class="">
+  <h4 class="mheading">Purchase Entry</h4>
+  {% if submitted %}
+
+    Inventry Was Suscessfully Updated!
+
+  {% else %}
+<div class="daycare_forms row g-3">
+
+    <form class="" action="" method="POST">
+      {% csrf_token %}
+      
+        {{ form_inventory.as_p }}
+     
+        <input type="submit" value="Edit Inventory List" class="btn btn-secondary" style="margin-left: 40%; width: 25%; border-radius: 20px; background-color:rgb(21, 105, 111)">
+    </form>
+
+</div>
+  
+
+  {% endif %}
+</div>
+
+<div class="">
+  <h4 class="mheading" >Generate New Sales Order Here</h4>
+  {% if submitted %}
+
+    Sales Order Was Successfully Created!
+
+  {% else %}
+<div class="daycare_forms row g-3" >
+
+    <form class="" action="" method="POST">
+      {% csrf_token %}
+      
+        {{ form.as_p }}
+     
+        <input type="submit" value="Submit" class="btn btn-secondary" style="margin-left: 40%; width: 25%; border-radius: 20px; background-color:rgb(21, 105, 111)">
+    </form>
+
+</div>
+  
+
+  {% endif %}
+</div>
+
 {% endblock %} 
 

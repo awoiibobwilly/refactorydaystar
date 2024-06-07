@@ -6,6 +6,85 @@
 
 {% block content %}
 
+{% load humanize %}
+
+<section id="firstcard" class="special_kad">
+    <div class="container">
+      <div class="row">
+         <div class="col-sm kad">
+          <img src="{% static 'atsapp/images/purchase_orders_icon.svg' %}" alt="" style="width:15%;">
+          <div><br><br>
+            <h2>Total Purchases</h2><br>
+            <h2 class= "text-white p-3 m-2" style="background-color:rgb(21, 105, 111)">UGX {{ grand_total_purchases.total_purchases|intcomma }}</h2>
+          </div>
+        </div>
+        <div class="col-sm kad">
+          <img src="{% static 'atsapp/images/sales_icon_one.svg' %}" alt="" style="width:15%;">
+          <div> <br><br>
+            <h2>Total Sales</h2><br>
+            <h2 class= "text-white p-3 m-2" style="background-color:rgb(21, 105, 111)">UGX {{ grand_total_sales.total_sales|intcomma }}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+</section><br>
+
+<section id="firstcard" class="special_kad">
+    <div class="container">
+        <div class="row">
+          <div class="col-sm kad">
+            <img src="{% static 'atsapp/images/doll_icon_one.svg' %}" alt="" style="width:20%;">
+            <div><br><br>
+                <h2>{{ total_dolls }}</h2>
+                <p>Different Types of Dolls</p>
+            </div>
+          </div>
+          <div class="col-sm kad">
+            <img src="{% static 'atsapp/images/doll_icon_one.svg' %}" alt="" style="width:20%;">
+            <div><br><br>
+                <h2>{{ total_quantity_purchased|intcomma }}</h2>
+                <p>Total Dolls Purchased</p>
+            </div>
+          </div>
+          <div class="col-sm kad">
+            <img src="{% static 'atsapp/images/checkin_icon_one.svg' %}" alt="" style="width:22%;">
+            <div> <br><br>
+                <h2>{{ total_baby_checkin }}</h2>
+                <p>Total Babies Checkedin</p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+</section><br><br>
+
+<section id="firstcard" class="special_kad mb-5">
+    <div class="container">
+        <div class="row">
+          <div class="col-sm kad">
+            <img src="{% static 'atsapp/images/baby_icon_one.svg' %}" alt="" style="width:20%;">
+            <div><br><br>
+                <h2>{{ total_babies }}</h2>
+                <p>Registered Babies</p>
+            </div>
+          </div>
+          <div class="col-sm kad">
+            <img src="{% static 'atsapp/images/sitter_icon_one.svg' %}" alt="" style="width:17%;">
+            <div> <br><br>
+                <h2>{{ total_sitters }}</h2>
+                <p>Registered Sitters</p>
+            </div>
+          </div>
+          <div class="col-sm kad">
+            <img src="{% static 'atsapp/images/checkout_icon_one.svg' %}" alt="" style="width:24%;">
+            <div><br><br>
+                <h2>{{ total_baby_checkout }}</h2>
+                <p>Total Babies Checkedin</p>
+            </div>
+          </div>
+        </div>
+      </div>
+</section>
 
 
 

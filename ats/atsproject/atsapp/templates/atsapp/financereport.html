@@ -5,72 +5,169 @@
 
 
 {% block content %}
+{% load humanize %}
+
+<div class="container mt-4" style = "font-size: 12px; border-radius: 40px">
+  <h4  class="infoheading">Purchase Financial Report</h4>
+  <div class="border p-3 overflow-scroll" style = "border-radius: 15px;">
+
+    <table class="table table table-hover table-light">
+      <thead>
+        <tr>
+          <th scope="col">Item ID</th>
+          <th scope="col">Item Number</th>
+          <th scope="col">Product Name</th>
+          <th scope="col">Date of Purchase</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Unit Cost (UGX)</th>
+          <th scope="col">Total (UGX)</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for purchase_report in purchases_finance_report %}
+        <tr>
+          <td>{{ purchase_report.id }}</td>
+          <td>{{ purchase_report.po_item_number }}</td>
+          <td>{{ purchase_report.po_product_name }}</td>
+          <td>{{ purchase_report.po_purchase_date }}</td>
+          <td>{{ purchase_report.po_quantity }}</td>
+          <td>{{ purchase_report.po_unit_cost|intcomma }}</td>
+          <td>{{ purchase_report.total|intcomma }}</td>
+          <td><a class = "btn btn-sm btn-success" href="{% url 'edit_inventory' purchase_report.id %}" style = "font-size: 10px;">Edit</a></td>
+          <td><a class = "btn btn-sm btn-danger" href= "{% url 'delete_inventory' purchase_report.id %}" style = "font-size: 10px;">Delete</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table> 
+</div>
+</div>
 
 
-<div>
+<div class="container mt-4" style = "font-size: 12px; border-radius: 40px">
+  <h4  class="infoheading">Sales Financial Report</h4>
+  <div class="border p-3 overflow-scroll" style = "border-radius: 15px;">
 
-    <h4 class="infoheading">Finance Records</h4>
-      <div class="table-responsive p-4">
-        <table class="table table-sm text-center table-bordered table-info table-striped">
+    <table class="table table table-hover table-light">
+      <thead>
+        <tr>
+          <th scope="col">Item ID</th>
+          <th scope="col">Customer</th>
+          <th scope="col">Item Number</th>
+          <th scope="col">Sales Date</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Unit Price (UGX)</th>
+          <th scope="col">Total (UGX)</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for sales_report in sales_finance_report %}
+        <tr>
+          <td>{{ sales_report.id }}</td>
+          <td>{{ sales_report.so_baby_id }}</td>
+          <td>{{ sales_report.so_item_number }}</td>
+          <td>{{ sales_report.so_date_created }}</td>
+          <td>{{ sales_report.so_quantity }}</td>
+          <td>{{ sales_report.so_unit_price|intcomma }}</td>
+          <td>{{ sales_report.total|intcomma }}</td>
+          <td><a class = "btn btn-sm btn-success" href="{% url 'edit_sales' sales_report.id %}" style = "font-size: 10px;">Edit</a></td>
+          <td><a class = "btn btn-sm btn-danger" href= "{% url 'delete_sales' sales_report.id %}" style = "font-size: 10px;">Delete</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table> 
+</div>
+</div>
+
+<div class="container mt-4" style = "font-size: 12px; border-radius: 40px">
+  <h4  class="infoheading">Baby Checkin Financial Report</h4>
+  <div class="border p-3 overflow-scroll" style = "border-radius: 15px;">
+
+    <table class="table table table-hover table-light">
         <thead>
           <tr>
-            <th scope="col">Baby ID No</th>
-            <th scope="col">Baby Sur Name</th>
-            <th scope="col">Baby Other Names</th>
-            <th scope="col">Check In Date</th>
-            <th scope="col">Check Out Date</th>
-            <th scope="col">Period of Stay</th>
-            <th scope="col">Sitter ID No</th>
-            <th scope="col">Sitter Sur Name</th>
-            <th scope="col">Sitter Other Names</th>
-            <th scope="col">Fee Paid by Baby</th>
-            <th scope="col">Allowance Due to Sitter</th>
+            <th scope="col">Checkin ID No</th>
+            <th scope="col">Baby Surname</th>
+            <th scope="col">Checkin Date</th>
+            <th scope="col">Care Time</th>
+            <th scope="col">Sitter Surname</th>
+            <th scope="col">Payment Choice</th>
+            <th scope="col">Checkin Fee (UGX)</th>
+            <th scope="col">Update</th>
+            <th scope="col">Remove</th>
 
           </tr>
+        </thead>
+
+               
+        <tbody>
+          {% for checkin_report in checkin_finance_report %}
           <tr>
-            <td scope="row">DDB-0001</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-            <td>7</td>
-            <td>8</td>
-            <td>9</td>
-            <td>10</td>
+            <td>CI-0{{ checkin_report.id }}</td>
+            <td>{{ checkin_report.baby_id }}</td>
+            <td>{{ checkin_report.checkin_date }}</td>
+            <td>{{ checkin_report.checkin_care_time }}</td>
+            <td>{{ checkin_report.sitter_id }}</td>
+            <td>{{ checkin_report.checkin_payment_choice }}</td>
+            <td>{{ checkin_report.daystar_checkin_fee|intcomma }}</td>
+            <td><a class = "btn btn-sm btn-success" href="{% url 'edit_checkin' checkin_report.id %}" style = "font-size: 10px;">Edit</a></td>
+            <td><a class = "btn btn-sm btn-danger" href= "{% url 'delete_checkin' checkin_report.id %}" style = "font-size: 10px;">Delete</a></td>
+            
           </tr>
-          <tr>
-            <td scope="row">DDB-0002</th>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-            <td>7</td>
-            <td>8</td>
-            <td>9</td>
-            <td>10</td>
-          </tr>
-          <tr>
-            <td scope="row">DDB-0003</th>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-            <td>7</td>
-            <td>8</td>
-            <td>9</td>
-            <td>10</td>
-          </tr>
+          {% endfor %}
         </tbody>
       </table> 
-</div>
-</div>
+  </div>
+  </div>
 
 
+  <div class="container mt-4" style = "font-size: 12px; border-radius: 40px">
+    <h4  class="infoheading">Baby Checkin Financial Report</h4>
+    <div class="border p-3 overflow-scroll" style = "border-radius: 15px;">
+  
+      <table class="table table table-hover table-light">
+          <thead>
+            <tr>
+              <th scope="col">Checkin ID No</th>
+              <th scope="col">Baby Surname</th>
+              <th scope="col">Checkin Date</th>
+              <th scope="col">Care Time</th>
+              <th scope="col">Sitter Surname</th>
+              <th scope="col">Payment Choice</th>
+              <th scope="col">Checkin Fee (UGX)</th>
+              <th scope="col">Sitter Fee (UGX)</th>
+              <th scope="col">Update</th>
+              <th scope="col">Remove</th>
+  
+            </tr>
+          </thead>
+  
+                 
+          <tbody>
+            {% for checkout_report in checkout_finance_report %}
+            <tr>
+              <td>CO-0{{ checkout_report.id }}</td>
+              <td>{{ checkout_report.baby_id }}</td>
+              <td>{{ checkout_report.checkout_date }}</td>
+              <td>{{ checkout_report.checkout_care_time }}</td>
+              <td>{{ checkout_report.sitter_id }}</td>
+              <td>{{ checkout_report.checkout_payment_choice }}</td>
+              <td>{{ checkout_report.daystar_care_time_fee|intcomma }}</td>
+              <td>{{ checkout_report.checkout_sitter_fee|intcomma }}</td>
+              <td><a class = "btn btn-sm btn-success" href="{% url 'edit_checkout' checkout_report.id %}" style = "font-size: 10px;">Edit</a></td>
+              <td><a class = "btn btn-sm btn-danger" href= "{% url 'delete_checkout' checkout_report.id %}" style = "font-size: 10px;">Delete</a></td>
+              
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table> 
+    </div>
+    
+    </div>
+
+ 
 
 {% endblock %}

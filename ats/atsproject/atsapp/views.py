@@ -11,6 +11,7 @@ from django.db import transaction
 from functools import partial
 import calendar
 from calendar import HTMLCalendar
+from django.db.models import F, Sum
 
 
 # def searchbabies(request):
@@ -328,13 +329,13 @@ def inventorylist(request):
 def edit_inventory(request, inventory_id):
     inventory = get_object_or_404(Purchase, pk=inventory_id)
     if request.method == 'POST':
-        form = PurchaseForm(request.POST, instance=inventory)
-        if form.is_valid():
-            form.save()
+        form_inventory = PurchaseForm(request.POST, instance=inventory)
+        if form_inventory.is_valid():
+            form_inventory.save()
             return redirect('inventory')
     else:
-        form = PurchaseForm(instance=inventory)
-    return render(request, 'atsapp/editinfo.html', {'form':form})
+        form_inventory = PurchaseForm(instance=inventory)
+    return render(request, 'atsapp/editinfo.html', {'form_inventory':form_inventory})
 
 
 # @login_required
@@ -375,6 +376,31 @@ def entersale(request):
 def productsaleslist(request):
     saleslists = Sales.objects.all()
     return render(request, 'atsapp/salesreport.html', {'saleslists': saleslists})
+
+@login_required
+def delete_sales(request, sales_id):
+    Sales.objects.filter(id=sales_id).delete()
+    return redirect('salesreport')
+
+@login_required
+def edit_sales(request, sales_id):
+    sales = get_object_or_404(Sales, pk=sales_id)
+    if request.method == 'POST':
+        form = SalesForm(request.POST, instance=sales)
+        if form.is_valid():
+            form.save()
+            return redirect('salesreport')
+    else:
+        form = SalesForm(instance=sales)
+    return render(request, 'atsapp/editinfo.html', {'form':form})
+
+@login_required
+def finance_report(request):
+    checkin_finance_report = Checkin.objects.all()
+    checkout_finance_report = Checkout.objects.all()
+    sales_finance_report = Sales.objects.all()
+    purchases_finance_report = Purchase.objects.all()
+    return render(request, 'atsapp/financereport.html', {'checkin_finance_report': checkin_finance_report, 'checkout_finance_report': checkout_finance_report, 'sales_finance_report': sales_finance_report, 'purchases_finance_report': purchases_finance_report})
 
 
 def index(request):
@@ -458,7 +484,35 @@ def logout_user(request):
     logout(request)
     return redirect('indexats')
 
-    
+
+@login_required
+def general_counts_view(request):
+
+    total_quantity_purchased = Purchase.purchase_total_quantity()
+
+    total_babies = Baby_Register.objects.count()  # Count all babies registered
+
+    total_baby_checkin = Checkin.objects.count()  # Count all babies checked in
+
+    total_baby_checkout = Checkout.objects.count()  # Count all babies checked out
+
+    total_sitters = Sitter_Register.objects.count()  # Count all sitters registered
+
+    total_dolls = Purchase.objects.count()  # Count all sitters registered
+
+    # Annotate each sale with the total price (quantity * unit_price)
+    sales_with_total = Sales.objects.annotate(total_price=F('so_quantity') * F('so_unit_price'))
+    # Calculate the grand total of all sales
+    grand_total_sales = sales_with_total.aggregate(total_sales=Sum('total_price'))
+
+    # Annotate each purchase with the total price (quantity * unit_price)
+    purchases_with_total = Purchase.objects.annotate(total_price=F('po_quantity') * F('po_unit_cost'))
+    # Calculate the grand total of all purchases
+    grand_total_purchases = purchases_with_total.aggregate(total_purchases=Sum('total_price'))
+
+
+    return render(request, 'atsapp/dashboard.html', {'total_babies': total_babies, 'total_sitters': total_sitters, 'total_dolls': total_dolls, 'grand_total_sales': grand_total_sales, 'grand_total_purchases': grand_total_purchases, 'total_quantity_purchased': total_quantity_purchased, 'total_baby_checkin': total_baby_checkin, 'total_baby_checkout': total_baby_checkout})
+
 
    
     

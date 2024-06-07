@@ -34,9 +34,8 @@
           <td>{{ sales.so_unit_price }}</td>
           <td>{{ sales.so_quantity }}</td>
           <td>{{ sales.total }}</td>
-          <td><a class = "btn btn-sm btn-success" href="" style = "font-size: 10px;">Edit</a></td>
-          <td><a class = "btn btn-sm btn-danger" href= "" style = "font-size: 10px;">Delete</a></td>
-          
+          <td><a class = "btn btn-sm btn-success" href="{% url 'edit_sales' sales.id %}" style = "font-size: 10px;">Edit</a></td>
+          <td><a class = "btn btn-sm btn-danger" href= "{% url 'delete_sales' sales.id %}" style = "font-size: 10px;">Delete</a></td>
         </tr>
         {% endfor %}
       </tbody>
